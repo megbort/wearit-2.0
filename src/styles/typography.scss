@@ -1,0 +1,30 @@
+@mixin h3 {
+  @apply leading-8 font-normal text-3xl tracking-wide;
+}
+
+@mixin title {
+  @apply leading-3 font-bold text-xl tracking-normal;
+}
+
+@mixin subtitle-1 {
+  @apply leading-6 font-normal text-lg tracking-wider;
+}
+
+@mixin text-body-1 {
+  @apply leading-3 font-normal text-base tracking-wide;
+}
+
+@mixin typography-styles {
+  h3 {
+    @include h3;
+  }
+  .title {
+    @include title;
+  }
+  .subtitle-1 {
+    @include subtitle-1();
+  }
+  .text-body-1 {
+    @include text-body-1();
+  }
+}
