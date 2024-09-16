@@ -1,3 +1,16 @@
+# WearIt v2.0
+
+Welcome to WearIt—an urban clothing retailer concept built with Next.js.
+
+This is the second iteration of the project, initially created during my early days of learning front-end development. In this version, we’re incorporating modern techniques and enhancements based on the original site’s concepts. Expect many ongoing updates and improvements 😊.
+
+Hope you enjoy exploring!
+
+— Megan Krenbrink
+<br>
+
+# Asides
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
