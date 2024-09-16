@@ -5,6 +5,12 @@
 @import '@fortawesome/fontawesome-svg-core/styles.css';
 @import '../styles/typography.scss';
 
+*,
+*::before,
+*::after {
+  @apply box-border;
+}
+
 body {
   @include typography-styles;
 }
