@@ -4,21 +4,27 @@ import React from 'react';
 interface CustomButtonProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   children?: React.ReactNode;
-  className?: string;
   disabled?: boolean;
+  variant?: 'primary' | 'secondary';
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
   onClick,
   children,
   disabled = false,
+  variant = 'primary',
 }) => {
+  const baseClass = 'py-2 px-4 rounded focus:outline-none';
+  const primaryClass = 'bg-wearit-red text-white hover:bg-wearit-green';
+  const secondaryClass =
+    'text-wearit-red border-2 border-wearit-red hover:border-wearit-green hover:text-wearit-green';
+
+  const buttonClass = `${baseClass} ${
+    variant === 'primary' ? primaryClass : secondaryClass
+  }`;
+
   return (
-    <button
-      className="bg-wearit-red text-white py-2 px-4 rounded hover:bg-wearit-green"
-      onClick={onClick}
-      disabled={disabled}
-    >
+    <button className={buttonClass} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );

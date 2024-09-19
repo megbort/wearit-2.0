@@ -2,7 +2,7 @@ import { StoreItem } from '@/models/store-item';
 import Image from 'next/image';
 
 interface ProductCardProps {
-  product: StoreItem;
+  readonly product: StoreItem;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {

@@ -25,7 +25,9 @@ export default function Home() {
           <p className="subtitle-1 text-wearit-white py-4">
             Now available for iPhone and Android
           </p>
-          <CustomButton onClick={handleClick}>Download Now</CustomButton>
+          <CustomButton variant="primary" onClick={handleClick}>
+            Download Now
+          </CustomButton>
         </div>
       </section>
       <section>
