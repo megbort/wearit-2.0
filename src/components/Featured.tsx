@@ -1,6 +1,7 @@
 import { StoreItems } from '@/services/mocks/store-items';
 import ProductCard from './ui/ProductCard';
-import { StoreItem } from '@/models/store-item';
+import { StoreItem } from '@/services/models/store-item';
+import CustomButton from './ui/Button';
 
 export default function Featured() {
   const featuredItems = StoreItems.slice(0, 8);
@@ -12,6 +13,9 @@ export default function Featured() {
         {featuredItems.map((product: StoreItem) => (
           <ProductCard key={product.id} product={product} />
         ))}
+      </div>
+      <div className="py-8">
+        <CustomButton variant="primary">Show More</CustomButton>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { StoreItem } from '@/models/store-item';
+import { StoreItem } from '@/services/models/store-item';
 
 export const StoreItems: StoreItem[] = [
   {

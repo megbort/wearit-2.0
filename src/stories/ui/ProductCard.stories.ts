@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ProductCard from '../../components/ui/ProductCard';
-import { StoreItem } from '@/models/store-item';
+import { StoreItem } from '@/services/models/store-item';
 
 const meta: Meta<typeof ProductCard> = {
   title: 'Components/ProductCard',
@@ -14,7 +14,6 @@ const meta: Meta<typeof ProductCard> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Dummy product data
 const product: StoreItem = {
   id: 1,
   name: 'Sample Product',

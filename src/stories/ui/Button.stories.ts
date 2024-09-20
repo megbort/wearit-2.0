@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import CustomButton from '../../components/ui/Button';
 
 const meta: Meta<typeof CustomButton> = {
-  title: 'Example/CustomButton',
+  title: 'Components/CustomButton',
   component: CustomButton,
   parameters: {
     layout: 'centered',

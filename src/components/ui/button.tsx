@@ -14,7 +14,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   disabled = false,
   variant = 'primary',
 }) => {
-  const baseClass = 'py-2 px-4 rounded focus:outline-none';
+  const baseClass = 'py-2 px-4 rounded';
   const primaryClass = 'bg-wearit-red text-white hover:bg-wearit-green';
   const secondaryClass =
     'text-wearit-red border-2 border-wearit-red hover:border-wearit-green hover:text-wearit-green';

@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import CustomButton from '../components/ui/Button';
 import Featured from '@/components/Featured';
+import Category from '@/components/Categories';
 
 export default function Home() {
   const handleClick = () => {
@@ -10,11 +11,10 @@ export default function Home() {
 
   return (
     <>
-      <section className="relative h-[calc(100vh-140px)] overflow-hidden">
+      <div className="relative h-[calc(100vh-140px)] overflow-hidden">
         <Image
           src="https://res.cloudinary.com/dm1yyjg7i/image/upload/v1726334119/wearit-hero-v2_fdxe1s.jpg"
           alt="Hero Image"
-          quality={100}
           layout="fill"
           objectFit="cover"
         />
@@ -29,10 +29,9 @@ export default function Home() {
             Download Now
           </CustomButton>
         </div>
-      </section>
-      <section>
-        <Featured></Featured>
-      </section>
+      </div>
+      <Featured></Featured>
+      <Category></Category>
     </>
   );
 }
