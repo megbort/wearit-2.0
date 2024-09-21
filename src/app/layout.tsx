@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.scss';
 import Navbar from '@/components/Navbar';
 import { Comfortaa } from 'next/font/google';
+import Footer from '@/components/Footer';
 
 const comfortaa = Comfortaa({
   subsets: ['latin'],
@@ -26,6 +27,7 @@ export default function RootLayout({
         <main>
           <Navbar />
           <div>{children}</div>
+          <Footer />
         </main>
       </body>
     </html>

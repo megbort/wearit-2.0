@@ -3,7 +3,7 @@
 }
 
 @mixin title {
-  @apply leading-3 font-bold text-lg tracking-normal;
+  @apply leading-6 font-bold text-xl tracking-wider;
 }
 
 @mixin subtitle-1 {
@@ -12,6 +12,14 @@
 
 @mixin text-body-1 {
   @apply leading-5 font-normal text-base tracking-wider;
+}
+
+@mixin text-caption {
+  @apply leading-5 font-bold text-xs tracking-wide;
+
+  @media (min-width: 1024px) {
+    @apply text-sm;
+  }
 }
 
 @mixin typography-styles {
@@ -26,5 +34,8 @@
   }
   .text-body-1 {
     @include text-body-1();
+  }
+  .text-caption {
+    @include text-caption();
   }
 }

@@ -29,7 +29,7 @@ export default function Navbar() {
 
   return (
     <header className="w-full">
-      <div className="bg-wearit-yellow flex justify-center py-1 text-xs md:text-sm font-bold">
+      <div className="bg-wearit-yellow flex justify-center py-1 text-caption">
         <p>Free shipping for orders over 50$ 🔥🔥🔥</p>
       </div>
       <nav className="bg-wearit-black flex items-center justify-between p-4 md:p-8 h-[100px]">

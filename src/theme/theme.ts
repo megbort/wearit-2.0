@@ -26,6 +26,37 @@ const theme = createTheme({
         },
       },
     },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        input: {
+          padding: '10px',
+        },
+        root: {
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#0070f3',
+          },
+          notchedOutline: {
+            borderColor: '#0070f3',
+          },
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          transform: 'translate(16px, 12px) scale(1)',
+          transition: 'transform 200ms cubic-bezier(0.4, 0, 0.2, 1)',
+          '&.MuiInputLabel-shrink': {
+            transform: 'translate(16px, -5px) scale(0.75)',
+            color: '#0070f3',
+          },
+          '&.Mui-focused': {
+            transform: 'translate(16px, -5px) scale(0.75)',
+            color: '0070f3',
+          },
+        },
+      },
+    },
   },
 });
 
