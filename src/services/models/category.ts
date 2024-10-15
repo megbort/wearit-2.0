@@ -1,4 +1,4 @@
-export interface CategoryItem {
+export interface Category {
   title: string;
   imageUrl: string;
 }

@@ -1,9 +1,9 @@
-import { StoreItem } from '@/services/models/store-item';
+import { Product } from '@/services/models/product';
 import Image from 'next/image';
 import Link from 'next/link';
 
 interface ProductCardProps {
-  product: StoreItem;
+  product: Product;
 }
 
 export default function ProductCard({ product }: Readonly<ProductCardProps>) {

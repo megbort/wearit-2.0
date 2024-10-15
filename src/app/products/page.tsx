@@ -1,6 +1,6 @@
-import { StoreItems } from '@/services/mocks/store-items';
 import ProductCard from '../../components/ui/ProductCard';
-import { StoreItem } from '@/services/models/store-item';
+import { Products as ProductsMock } from '@/services/mocks/products';
+import { Product } from '@/services/models/product';
 import CustomButton from '../../components/ui/Button';
 import SelectDropdown from '../../components/ui/Select';
 
@@ -35,7 +35,7 @@ export default function Products() {
         <SelectDropdown {...sortBySelect} />
       </div>
       <div className="grid gap-4 md:gap-6 lg:gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {StoreItems.map((product: StoreItem) => (
+        {ProductsMock.map((product: Product) => (
           <div key={product.id} className="flex justify-center">
             <ProductCard product={product} />
           </div>

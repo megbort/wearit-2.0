@@ -1,16 +1,14 @@
-import { StoreItems } from '@/services/mocks/store-items';
+import { Products } from '@/services/mocks/products';
 import ProductCard from './ui/ProductCard';
-import { StoreItem } from '@/services/models/store-item';
+import { Product } from '@/services/models/product';
 import CustomButton from './ui/Button';
 
 export default function Featured() {
-  const featuredItems = StoreItems.slice(0, 8);
-
   return (
     <div className="py-12 flex flex-col items-center">
       <h3 className="pb-8 px-4 font-bold">New Featured Items ✨</h3>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
-        {featuredItems.map((product: StoreItem) => (
+        {Products.slice(0, 8).map((product: Product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>

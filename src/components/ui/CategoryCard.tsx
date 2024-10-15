@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import { CategoryItem } from '@/services/models/category-item';
+import { Category } from '@/services/models/category';
 import Link from 'next/link';
 
 interface CategoryCardProps {
-  category: CategoryItem;
+  category: Category;
 }
 
 export default function CategoryCard({

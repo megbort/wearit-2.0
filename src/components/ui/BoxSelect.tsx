@@ -22,11 +22,11 @@ export default function BoxSelect({
 
   return (
     <div>
-      <p className="text-body-1">
+      <p className="subtitle-1 pb-1">
         {title}:{' '}
         {selectedValue && <span className="text-caption">{selectedValue}</span>}
       </p>
-      <div className="flex gap-2">
+      <div className="flex gap-3">
         {items.map((item) => (
           <button
             key={item.value}

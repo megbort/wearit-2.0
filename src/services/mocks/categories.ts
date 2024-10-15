@@ -1,6 +1,6 @@
-import { CategoryItem } from '../models/category-item';
+import { Category } from '../models/category';
 
-export const CategoryItems: CategoryItem[] = [
+export const Categories: Category[] = [
   {
     title: 'Shop New Arrivals',
     imageUrl:
