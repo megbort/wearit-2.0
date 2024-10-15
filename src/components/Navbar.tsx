@@ -36,10 +36,10 @@ export default function Navbar() {
         <div>
           <Link href={'/'}>
             <Image
-              src="https://res.cloudinary.com/dm1yyjg7i/image/upload/v1725737661/wearitlogo-wt_1_flpak3.svg"
+              src="https://res.cloudinary.com/dm1yyjg7i/image/upload/v1729021775/wearit-logo-v3_cj1le4.png"
               alt="Wearit Logo"
-              width={175}
-              height={175}
+              width={200}
+              height={200}
             />
           </Link>
         </div>

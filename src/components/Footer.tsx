@@ -22,15 +22,15 @@ export default function Footer() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="flex justify-around items-center h-[500px] bg-wearit-black">
+      <div className="flex p-2 gap-8 flex-col text-center md:text-left md:flex-row justify-around items-center h-full md:h-[500px] bg-wearit-black">
         <div className="text-wearit-white gap-8">
           <Image
-            src="https://res.cloudinary.com/dm1yyjg7i/image/upload/v1725737498/wearitlogo-ft_1_vjwxmd.svg"
+            src="https://res.cloudinary.com/dm1yyjg7i/image/upload/v1729021775/wearit-logo-v2_xo1gea.png"
             alt="WearIt Logo"
-            height={200}
-            width={200}
+            height={175}
+            width={175}
           />
-          <div className="flex justify-center gap-6">
+          <div className="flex justify-center pt-2 gap-6">
             <FontAwesomeIcon
               icon={faXTwitter}
               style={{ fontSize: '22px' }}
@@ -53,7 +53,7 @@ export default function Footer() {
             />
           </div>
         </div>
-        <div className="text-wearit-white ">
+        <div className="text-wearit-white">
           <ul className="flex flex-col gap-4">
             <li className="title">Main Menu</li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
@@ -93,7 +93,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <div className="flex flex-col gap-2 w-[350px]">
+        <div className="flex flex-col gap-2 max-w-[320px]">
           <p className="text-wearit-white">
             Sign up for our newsletter to get updated on latest collections,
             dales and other news!
@@ -122,6 +122,9 @@ export default function Footer() {
             A confirmation e-mail has been sent!
           </p>
         </div>
+      </div>
+      <div className="bg-wearit-yellow text-wearit-black text-center text-caption py-1">
+        Designed and built by Megan Krenbrink © 2024
       </div>
     </ThemeProvider>
   );

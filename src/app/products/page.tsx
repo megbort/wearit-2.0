@@ -24,7 +24,7 @@ const categorySelect = {
     { value: 'jackets', label: 'Jackets' },
   ],
 };
-export default function Page() {
+export default function Products() {
   return (
     <div className="py-12 px-2 md:px-10 w-full lg:max-w-5xl xl:max-w-7xl mx-auto">
       <header className="p-4 text-center">
