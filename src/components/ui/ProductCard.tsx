@@ -5,9 +5,9 @@ interface ProductCardProps {
   readonly product: StoreItem;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product }: Readonly<ProductCardProps>) {
   return (
-    <div className="w-[300px] h-[300px] flex flex-col justify-between bg-neutral-100 rounded-lg border hover:border-neutral-600 hover:cursor-pointer hover:bg-transparent">
+    <div className="w-[280px] h-[280px] flex flex-col justify-between bg-neutral-100 rounded-lg border hover:border-neutral-600 hover:cursor-pointer hover:bg-transparent">
       <div className="h-[230px] relative">
         <Image
           src={product.imageUrl}

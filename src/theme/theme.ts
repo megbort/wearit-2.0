@@ -57,6 +57,21 @@ const theme = createTheme({
         },
       },
     },
+    MuiSelect: {
+      styleOverrides: {
+        root: {
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#76dbbf',
+          },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#76dbbf',
+          },
+        },
+        icon: {
+          color: '#ff3d5c',
+        },
+      },
+    },
   },
 });
 

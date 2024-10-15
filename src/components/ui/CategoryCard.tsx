@@ -5,7 +5,9 @@ interface CategoryCardProps {
   readonly category: CategoryItem;
 }
 
-export default function CategoryCard({ category }: CategoryCardProps) {
+export default function CategoryCard({
+  category,
+}: Readonly<CategoryCardProps>) {
   return (
     <div className="h-[400px] w-[300px] md:w-[500px] xl:w-[600px] relative hover:cursor-pointer group">
       <Image

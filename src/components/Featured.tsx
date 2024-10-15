@@ -7,9 +7,9 @@ export default function Featured() {
   const featuredItems = StoreItems.slice(0, 8);
 
   return (
-    <div className="py-10 flex flex-col items-center">
+    <div className="py-12 flex flex-col items-center">
       <h3 className="pb-8 px-4 font-bold">New Featured Items ✨</h3>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
         {featuredItems.map((product: StoreItem) => (
           <ProductCard key={product.id} product={product} />
         ))}
