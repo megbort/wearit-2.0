@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import CategoryCard from '../../components/ui/CategoryCard';
-import { CategoryItem } from '@/services/models/category-item';
+import { Category } from '@/services/models/category';
 
 const meta: Meta<typeof CategoryCard> = {
   title: 'Components/CategoryCard',
@@ -11,7 +11,7 @@ const meta: Meta<typeof CategoryCard> = {
   tags: ['autodocs'],
 };
 
-const category: CategoryItem = {
+const category: Category = {
   title: 'Shop New Arrivals',
   imageUrl:
     'https://res.cloudinary.com/dm1yyjg7i/image/upload/v1725586090/pexels-alteredsnaps-14663663_pjqwsy.jpg',

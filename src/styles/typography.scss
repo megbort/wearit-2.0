@@ -3,7 +3,11 @@
 }
 
 @mixin title {
-  @apply leading-6 font-bold text-xl tracking-wider;
+  @apply leading-6 font-bold text-lg tracking-wider;
+
+  @media (min-width: 1278px) {
+    @apply text-xl;
+  }
 }
 
 @mixin subtitle-1 {

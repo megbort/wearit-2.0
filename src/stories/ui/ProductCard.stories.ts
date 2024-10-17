@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ProductCard from '../../components/ui/ProductCard';
-import { StoreItem } from '@/services/models/store-item';
+import { Product } from '@/services/models/product';
 
 const meta: Meta<typeof ProductCard> = {
   title: 'Components/ProductCard',
@@ -14,12 +14,20 @@ const meta: Meta<typeof ProductCard> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const product: StoreItem = {
+const product: Product = {
   id: 1,
-  name: 'Sample Product',
+  name: 'Store Item 1',
   price: 29.99,
   imageUrl:
-    'https://res.cloudinary.com/dm1yyjg7i/image/upload/v1726339977/clothing-item-03_yjignx.jpg',
+    'https://res.cloudinary.com/dm1yyjg7i/image/upload/v1726339974/clothing-item-01_ecaf4s.jpg',
+  colors: ['black', 'white', 'blue'],
+  sizes: ['xs', 'sm', 'm', 'l', 'xl'],
+  details: [
+    'Long sleeve tee with buttons',
+    'Flexible neckband',
+    '100% Cotton Jersey, 180GSM',
+    'Made in the USA',
+  ],
 };
 
 export const Default: Story = {
