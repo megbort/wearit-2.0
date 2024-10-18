@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
   images: {
-    domains: ['res.cloudinary.com'],
+    loader: 'custom',
+    loaderFile: './src/utils/custom-image-loader.ts',
   },
 };
 

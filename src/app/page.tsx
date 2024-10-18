@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <div className="relative h-[calc(100vh-140px)] overflow-hidden">
         <Image
-          src="https://res.cloudinary.com/dm1yyjg7i/image/upload/v1726334119/wearit-hero-v2_fdxe1s.jpg"
+          src="wearit-hero-v2_fdxe1s.jpg"
           alt="Hero Image"
           layout="fill"
           objectFit="cover"
