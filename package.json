@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NEXT_DEV_TURBOPACK=1 next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -18,9 +18,9 @@
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@mui/material": "^6.1.0",
-    "next": "14.2.6",
-    "react": "^18",
-    "react-dom": "^18"
+    "next": "15.0.2",
+    "react": "19.0.0-rc-02c0e824-20241028",
+    "react-dom": "19.0.0-rc-02c0e824-20241028"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
@@ -33,15 +33,19 @@
     "@storybook/react": "^8.3.0",
     "@storybook/test": "^8.3.0",
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
     "eslint": "^8",
-    "eslint-config-next": "14.2.6",
+    "eslint-config-next": "15.0.2",
     "eslint-plugin-storybook": "^0.8.0",
     "postcss": "^8",
     "sass": "^1.78.0",
     "storybook": "^8.3.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+  },
+  "overrides": {
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
   }
 }
