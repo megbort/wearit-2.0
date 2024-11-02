@@ -7,13 +7,9 @@ interface BoxSelectProps {
   items: { value: string; selected: boolean }[];
 }
 
-export default function BoxSelect({
-  title,
-  boxSize,
-  items,
-}: Readonly<BoxSelectProps>) {
+const BoxSelect = ({ title, boxSize, items }: Readonly<BoxSelectProps>) => {
   const [selectedValue, setSelectedValue] = React.useState<string>(
-    items.find((item) => item.selected)?.value ?? ''
+    items.length > 0 ? items.find((item) => item.selected)?.value ?? '' : ''
   );
 
   const handleChange = (value: string) => {
@@ -44,4 +40,12 @@ export default function BoxSelect({
       </div>
     </div>
   );
-}
+};
+
+BoxSelect.defaultProps = {
+  title: 'Default Title',
+  boxSize: 50,
+  items: [],
+};
+
+export default BoxSelect;

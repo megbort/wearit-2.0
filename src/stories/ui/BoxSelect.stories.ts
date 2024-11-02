@@ -14,5 +14,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    title: 'Select an option',
+    boxSize: 100,
+    items: [
+      { value: 'Option 1', selected: false },
+      { value: 'Option 2', selected: true },
+      { value: 'Option 3', selected: false },
+    ],
+  },
 };
