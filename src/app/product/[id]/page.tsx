@@ -3,27 +3,37 @@ import CustomButton from '@/components/ui/Button';
 import { Products as ProductsMock } from '@/services/mocks/products';
 import Image from 'next/image';
 
-const product = ProductsMock[0];
+type ProductProps = Readonly<{
+  params: {
+    id: string;
+  };
+}>;
 
-const colorSelect = {
-  title: 'Color',
-  boxSize: 75,
-  items: product.colors.map((color, index) => ({
-    value: color.charAt(0).toUpperCase() + color.slice(1),
-    selected: index === 0,
-  })),
-};
+export default function Product({ params }: ProductProps) {
+  const product = ProductsMock.find((p) => p.id === params.id);
 
-const sizeSelect = {
-  title: 'Size',
-  boxSize: 40,
-  items: product.sizes.map((size, index) => ({
-    value: size.toUpperCase(),
-    selected: index === 0,
-  })),
-};
+  if (!product) {
+    return <div>Product not found</div>;
+  }
 
-export default function Product() {
+  const colorSelect = {
+    title: 'Color',
+    boxSize: 75,
+    items: product.colors.map((color, index) => ({
+      value: color.charAt(0).toUpperCase() + color.slice(1),
+      selected: index === 0,
+    })),
+  };
+
+  const sizeSelect = {
+    title: 'Size',
+    boxSize: 40,
+    items: product.sizes.map((size, index) => ({
+      value: size.toUpperCase(),
+      selected: index === 0,
+    })),
+  };
+
   return (
     <div className="p-32 flex justify-center gap-20">
       <div>
@@ -67,4 +77,10 @@ export default function Product() {
       </div>
     </div>
   );
+}
+
+export function generateStaticParams() {
+  return ProductsMock.map((product) => ({
+    id: product.id,
+  }));
 }

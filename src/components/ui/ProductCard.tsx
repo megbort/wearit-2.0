@@ -8,7 +8,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: Readonly<ProductCardProps>) {
   return (
-    <Link href={'/product'}>
+    <Link href={`/product/${product.id}`}>
       <div className="w-[280px] h-[280px] flex flex-col justify-between bg-neutral-100 rounded-lg border hover:border-neutral-600 hover:cursor-pointer hover:bg-transparent">
         <div className="h-[230px] relative">
           <Image
