@@ -15,8 +15,9 @@ export default function CategoryCard({
         <Image
           src={category.imageUrl}
           alt={category.title}
-          layout="fill"
-          objectFit="cover"
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
+          style={{ objectFit: 'cover' }}
           className="rounded-md transform transition-all duration-300"
         />
         <div className="absolute inset-0 bg-wearit-black opacity-0 transition-opacity duration-300 group-hover:opacity-60 rounded-md"></div>

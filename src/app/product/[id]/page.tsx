@@ -36,7 +36,7 @@ export default function Product({ params }: ProductProps) {
   };
 
   return (
-    <div>
+    <div className="pt-12">
       <div className="py-12 flex justify-center gap-20">
         <div></div>
         <div>
@@ -44,8 +44,9 @@ export default function Product({ params }: ProductProps) {
             <Image
               src={product.imageUrl}
               alt={product.name}
-              layout="fill"
-              objectFit="cover"
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
+              style={{ objectFit: 'cover' }}
               className="rounded"
             />
           </div>

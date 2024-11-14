@@ -36,7 +36,7 @@ export default function Navbar() {
         <div>
           <Link href={'/'}>
             <Image
-              src="wearit-logo-v3_cj1le4.png"
+              src="wearit/wearit-logo-v3_cj1le4.png"
               alt="Wearit Logo"
               width={200}
               height={200}

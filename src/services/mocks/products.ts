@@ -5,7 +5,7 @@ export const Products: Product[] = [
     id: '01',
     name: 'Store Item 1',
     price: 29.99,
-    imageUrl: 'clothing-item-01_ecaf4s.jpg',
+    imageUrl: 'wearit/clothing-item-01_ecaf4s.jpg',
     colors: ['black', 'white', 'blue'],
     sizes: ['sm', 'm', 'l', 'xl'],
     details: [
@@ -19,7 +19,7 @@ export const Products: Product[] = [
     id: '02',
     name: 'Store Item 2',
     price: 9.99,
-    imageUrl: 'clothing-item-02_u2qn0c.jpg',
+    imageUrl: 'wearit/clothing-item-02_u2qn0c.jpg',
     colors: ['white', 'blue'],
     sizes: ['sm', 'm', 'l'],
     details: [
@@ -33,7 +33,7 @@ export const Products: Product[] = [
     id: '03',
     name: 'Store Item 3',
     price: 15.99,
-    imageUrl: 'clothing-item-03_yjignx.jpg',
+    imageUrl: 'wearit/clothing-item-03_yjignx.jpg',
     colors: ['black', 'white', 'blue'],
     sizes: ['xs', 'sm', 'm', 'l', 'xl'],
     details: [
@@ -47,7 +47,7 @@ export const Products: Product[] = [
     id: '04',
     name: 'Store Item 4',
     price: 49.99,
-    imageUrl: 'clothing-item-04_k0dnrx.jpg',
+    imageUrl: 'wearit/clothing-item-04_k0dnrx.jpg',
     colors: ['black', 'white', 'blue'],
     sizes: ['xs', 'sm', 'm', 'l', 'xl'],
     details: [
@@ -61,7 +61,7 @@ export const Products: Product[] = [
     id: '05',
     name: 'Store Item 5',
     price: 20.99,
-    imageUrl: 'clothing-item-05_e4syci.jpg',
+    imageUrl: 'wearit/clothing-item-05_e4syci.jpg',
     colors: ['black', 'white', 'blue'],
     sizes: ['xs', 'sm', 'm', 'l', 'xl'],
     details: [
@@ -75,7 +75,7 @@ export const Products: Product[] = [
     id: '06',
     name: 'Store Item 6',
     price: 60.54,
-    imageUrl: 'clothing-item-06_myflly.jpg',
+    imageUrl: 'wearit/clothing-item-06_myflly.jpg',
     colors: ['black', 'white', 'blue'],
     sizes: ['xs', 'sm', 'm', 'l', 'xl'],
     details: [
@@ -89,7 +89,7 @@ export const Products: Product[] = [
     id: '07',
     name: 'Store Item 7',
     price: 29.99,
-    imageUrl: 'clothing-item-07_umfs2j.jpg',
+    imageUrl: 'wearit/clothing-item-07_umfs2j.jpg',
     colors: ['black', 'white', 'blue'],
     sizes: ['xs', 'sm', 'm', 'l', 'xl'],
     details: [
@@ -103,7 +103,7 @@ export const Products: Product[] = [
     id: '08',
     name: 'Store Item 8',
     price: 59.99,
-    imageUrl: 'clothing-item-08_hkb1af.jpg',
+    imageUrl: 'wearit/clothing-item-08_hkb1af.jpg',
     colors: ['black', 'white', 'blue'],
     sizes: ['xs', 'sm', 'm', 'l', 'xl'],
     details: [
@@ -117,7 +117,7 @@ export const Products: Product[] = [
     id: '09',
     name: 'Store Item 9',
     price: 15.15,
-    imageUrl: 'clothing-item-09_dyyiah.jpg',
+    imageUrl: 'wearit/clothing-item-09_dyyiah.jpg',
     colors: ['black', 'white', 'blue'],
     sizes: ['xs', 'sm', 'm', 'l', 'xl'],
     details: [
@@ -131,7 +131,7 @@ export const Products: Product[] = [
     id: '10',
     name: 'Store Item 10',
     price: 129.99,
-    imageUrl: 'clothing-item-10_dl62rk.jpg',
+    imageUrl: 'wearit/clothing-item-10_dl62rk.jpg',
     colors: ['black', 'white', 'blue'],
     sizes: ['xs', 'sm', 'm', 'l', 'xl'],
     details: [
@@ -145,7 +145,7 @@ export const Products: Product[] = [
     id: '11',
     name: 'Store Item 11',
     price: 9.99,
-    imageUrl: 'clothing-item-11_fbagsu.jpg',
+    imageUrl: 'wearit/clothing-item-11_fbagsu.jpg',
     colors: ['black', 'white', 'blue'],
     sizes: ['xs', 'sm', 'm', 'l', 'xl'],
     details: [
@@ -159,7 +159,7 @@ export const Products: Product[] = [
     id: '12',
     name: 'Store Item 12',
     price: 12.05,
-    imageUrl: 'clothing-item-12_o400wj.jpg',
+    imageUrl: 'wearit/clothing-item-12_o400wj.jpg',
     colors: ['black', 'white', 'blue'],
     sizes: ['xs', 'sm', 'm', 'l', 'xl'],
     details: [

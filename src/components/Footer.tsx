@@ -25,7 +25,7 @@ export default function Footer() {
       <div className="flex p-2 gap-8 flex-col text-center md:text-left md:flex-row justify-around items-center h-full md:h-[500px] bg-wearit-black">
         <div className="text-wearit-white gap-8">
           <Image
-            src="wearit-logo-v2_xo1gea.png"
+            src="wearit/wearit-logo-v2_xo1gea.png"
             alt="WearIt Logo"
             height={175}
             width={175}
