@@ -1,3 +1,5 @@
+import { CategoryType } from './category';
+
 export interface Product {
   id: string;
   name: string;
@@ -6,4 +8,7 @@ export interface Product {
   colors: string[];
   sizes: string[];
   details: string[];
+  featured?: boolean;
+  sale?: boolean;
+  category?: CategoryType;
 }

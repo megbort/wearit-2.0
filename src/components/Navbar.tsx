@@ -40,6 +40,7 @@ export default function Navbar() {
               alt="Wearit Logo"
               width={200}
               height={200}
+              priority
             />
           </Link>
         </div>

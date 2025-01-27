@@ -1,11 +1,12 @@
 'use client';
+
 import React from 'react';
 
 interface CustomButtonProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   children?: React.ReactNode;
   disabled?: boolean;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'text';
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
@@ -18,10 +19,17 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   const primaryClass = 'bg-wearit-red text-white hover:bg-wearit-green';
   const secondaryClass =
     'text-wearit-red border-2 border-wearit-red hover:border-wearit-green hover:text-wearit-green';
+  const textClass =
+    'text-xs text-wearit-red hover:underline hover:text-red-600';
 
-  const buttonClass = `${baseClass} ${
-    variant === 'primary' ? primaryClass : secondaryClass
-  }`;
+  let variantClass = primaryClass;
+  if (variant === 'secondary') {
+    variantClass = secondaryClass;
+  } else if (variant === 'text') {
+    variantClass = textClass;
+  }
+
+  const buttonClass = `${baseClass} ${variantClass}`;
 
   return (
     <button className={buttonClass} onClick={onClick} disabled={disabled}>

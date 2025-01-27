@@ -1,4 +1,5 @@
 'use client';
+
 import Image from 'next/image';
 import CustomButton from '../components/ui/Button';
 import Featured from '@/components/Featured';
@@ -20,6 +21,7 @@ export default function Home() {
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
           style={{ objectFit: 'cover' }}
+          priority
         />
         <div className="absolute top-10 left-1/2 md:top-1/4 md:left-3/4 transform -translate-x-1/2 translate-y-1/2 bg-stone-900/80 p-8 rounded w-[300px] md:w-[400px]">
           <h3 className="text-wearit-white">

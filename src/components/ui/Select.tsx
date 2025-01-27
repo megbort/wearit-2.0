@@ -7,40 +7,42 @@ import theme from '../../theme/theme';
 import { ThemeProvider } from '@mui/material';
 
 interface SelectDropdownProps {
-  placeholder: string;
-  items: { value: string; label: string }[];
+  readonly placeholder: string;
+  readonly items: { value: string; label: string }[];
+  readonly value: string;
+  readonly onChange: (event: SelectChangeEvent) => void;
 }
 
 export default function SelectDropdown({
   placeholder,
   items,
-}: Readonly<SelectDropdownProps>) {
-  const [selectedValue, setSelectedValue] = React.useState<string>('');
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setSelectedValue(event.target.value);
-  };
+  value,
+  onChange,
+}: SelectDropdownProps) {
   return (
     <ThemeProvider theme={theme}>
       <div>
         <FormControl sx={{ m: 1, minWidth: 200 }}>
           <Select
-            value={selectedValue}
-            onChange={handleChange}
+            value={value}
+            onChange={onChange}
             displayEmpty
             inputProps={{ 'aria-label': placeholder }}
             renderValue={(selected) => {
-              if (selected.length === 0) {
+              if (!selected) {
                 return <em>{placeholder}</em>;
               }
-              return selected;
+              const selectedItem = items.find(
+                (item) => item.value === selected
+              );
+              return selectedItem ? selectedItem.label : selected;
             }}
           >
             <MenuItem disabled value="">
               <em>{placeholder}</em>
             </MenuItem>
             {items.map((item) => (
-              <MenuItem key={item.value} value={item.label}>
+              <MenuItem key={item.value} value={item.value}>
                 {item.label}
               </MenuItem>
             ))}

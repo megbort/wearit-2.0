@@ -1,4 +1,5 @@
 import { Product } from '@/services/models/product';
+import { CategoryType } from '../models/category';
 
 export const Products: Product[] = [
   {
@@ -14,6 +15,9 @@ export const Products: Product[] = [
       '100% Cotton Jersey, 180GSM',
       'Made in the USA',
     ],
+    featured: true,
+    sale: false,
+    category: CategoryType.Jackets,
   },
   {
     id: '02',
@@ -28,6 +32,9 @@ export const Products: Product[] = [
       '100% Cotton Jersey, 180GSM',
       'Made in the USA',
     ],
+    featured: false,
+    sale: true,
+    category: CategoryType.Pants,
   },
   {
     id: '03',
@@ -42,6 +49,9 @@ export const Products: Product[] = [
       '100% Cotton Jersey, 180GSM',
       'Made in the USA',
     ],
+    featured: true,
+    sale: true,
+    category: CategoryType.Tees,
   },
   {
     id: '04',
@@ -56,6 +66,9 @@ export const Products: Product[] = [
       '100% Cotton Jersey, 180GSM',
       'Made in the USA',
     ],
+    featured: true,
+    sale: false,
+    category: CategoryType.Tees,
   },
   {
     id: '05',
@@ -70,6 +83,9 @@ export const Products: Product[] = [
       '100% Cotton Jersey, 180GSM',
       'Made in the USA',
     ],
+    featured: true,
+    sale: false,
+    category: CategoryType.Sweaters,
   },
   {
     id: '06',
@@ -84,6 +100,9 @@ export const Products: Product[] = [
       '100% Cotton Jersey, 180GSM',
       'Made in the USA',
     ],
+    featured: false,
+    sale: true,
+    category: CategoryType.Sweaters,
   },
   {
     id: '07',
@@ -98,6 +117,9 @@ export const Products: Product[] = [
       '100% Cotton Jersey, 180GSM',
       'Made in the USA',
     ],
+    featured: true,
+    sale: true,
+    category: CategoryType.Jackets,
   },
   {
     id: '08',
@@ -112,6 +134,9 @@ export const Products: Product[] = [
       '100% Cotton Jersey, 180GSM',
       'Made in the USA',
     ],
+    featured: true,
+    sale: false,
+    category: CategoryType.Pants,
   },
   {
     id: '09',
@@ -126,6 +151,9 @@ export const Products: Product[] = [
       '100% Cotton Jersey, 180GSM',
       'Made in the USA',
     ],
+    featured: true,
+    sale: false,
+    category: CategoryType.Jackets,
   },
   {
     id: '10',
@@ -140,6 +168,9 @@ export const Products: Product[] = [
       '100% Cotton Jersey, 180GSM',
       'Made in the USA',
     ],
+    featured: true,
+    sale: true,
+    category: CategoryType.Tees,
   },
   {
     id: '11',
@@ -154,6 +185,9 @@ export const Products: Product[] = [
       '100% Cotton Jersey, 180GSM',
       'Made in the USA',
     ],
+    featured: true,
+    sale: true,
+    category: CategoryType.Pants,
   },
   {
     id: '12',
@@ -168,5 +202,8 @@ export const Products: Product[] = [
       '100% Cotton Jersey, 180GSM',
       'Made in the USA',
     ],
+    featured: true,
+    sale: true,
+    category: CategoryType.Pants,
   },
 ];

@@ -22,7 +22,7 @@ export default function Footer() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="flex p-2 gap-8 flex-col text-center md:text-left md:flex-row justify-around items-center h-full md:h-[500px] bg-wearit-black">
+      <div className="flex p-4 gap-8 flex-col text-center md:text-left md:flex-row justify-around items-center h-full md:h-[500px] bg-wearit-black">
         <div className="text-wearit-white gap-8">
           <Image
             src="wearit/wearit-logo-v2_xo1gea.png"
@@ -93,7 +93,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <div className="flex flex-col gap-2 max-w-[320px]">
+        <div className="flex flex-col gap-2 max-w-[250px] lg:max-w-[320px] mt-8">
           <p className="text-wearit-white">
             Sign up for our newsletter to get updated on latest collections,
             dales and other news!
@@ -124,7 +124,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="bg-wearit-yellow text-wearit-black text-center text-caption py-1">
-        Designed and built by Megan Krenbrink © 2024
+        Designed and built by Megan Krenbrink.
       </div>
     </ThemeProvider>
   );

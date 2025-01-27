@@ -1,6 +1,6 @@
-import { Category } from '../models/category';
+import { CategoryCard } from '../models/category';
 
-export const Categories: Category[] = [
+export const Categories: CategoryCard[] = [
   {
     title: 'Shop New Arrivals',
     imageUrl: 'wearit/pexels-alteredsnaps-14663663_pjqwsy.jpg',
