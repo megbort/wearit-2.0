@@ -24,9 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={comfortaa.className}>
-        <main>
+        <main className="h-full flex flex-col">
           <Navbar />
-          <div>{children}</div>
+          <div className="flex-grow">{children}</div>
           <Footer />
         </main>
       </body>

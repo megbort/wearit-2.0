@@ -13,8 +13,21 @@
   @apply box-border;
 }
 
+html,
+body,
+#__next,
+main {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   @include typography-styles;
+  @apply flex flex-col;
+}
+
+main {
+  @apply flex-1;
 }
 
 .slick-arrow.slick-prev::before,

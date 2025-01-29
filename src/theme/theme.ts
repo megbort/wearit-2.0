@@ -16,6 +16,9 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           fontFamily: `${comfortaa.style.fontFamily}, sans-serif`,
+          '&:hover': {
+            backgroundColor: '#76dbbf',
+          },
         },
       },
     },
