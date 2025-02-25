@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import BoxSelect from '../../components/ui/BoxSelect';
 
 const meta: Meta<typeof BoxSelect> = {
-  title: 'Components/CategorBoxSelectyCard',
+  title: 'Components/BoxSelect',
   component: BoxSelect,
   parameters: {
     layout: 'centered',

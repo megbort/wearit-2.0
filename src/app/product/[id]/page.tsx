@@ -10,8 +10,10 @@ type ProductProps = Readonly<{
   };
 }>;
 
-export default function Product({ params }: ProductProps) {
-  const product = ProductsMock.find((p) => p.id === params.id);
+export default async function Product({ params }: ProductProps) {
+  const { id } = await params;
+
+  const product = ProductsMock.find((p) => p.id === id);
 
   if (!product) {
     return <div>Product not found</div>;

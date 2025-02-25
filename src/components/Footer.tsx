@@ -22,7 +22,7 @@ export default function Footer() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="flex p-4 gap-8 flex-col text-center md:text-left md:flex-row justify-around items-center h-full md:h-[500px] bg-wearit-black">
+      <div className="flex p-4 gap-8 flex-col text-center md:text-left md:flex-row justify-around items-center md:h-[500px] bg-wearit-black">
         <div className="text-wearit-white gap-8">
           <Image
             src="wearit/wearit-logo-v2_xo1gea.png"
