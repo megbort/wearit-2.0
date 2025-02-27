@@ -2,6 +2,7 @@ import { Products } from '@/services/mocks/products';
 import ProductCard from './ui/ProductCard';
 import { Product } from '@/services/models/product';
 import CustomButton from './ui/Button';
+import Link from 'next/link';
 
 export default function Featured() {
   return (
@@ -13,7 +14,9 @@ export default function Featured() {
         ))}
       </div>
       <div className="py-8">
-        <CustomButton variant="primary">Show More</CustomButton>
+        <Link href={'products'}>
+          <CustomButton variant="primary">View More</CustomButton>
+        </Link>
       </div>
     </div>
   );

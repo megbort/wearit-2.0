@@ -34,46 +34,44 @@ const categorySelect = {
 export default function Products() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedSort, setSelectedSort] = useState<string>('all');
+  const [visibleCount, setVisibleCount] = useState(8);
+
+  const getFilteredProducts = () => {
+    let filteredProducts = ProductMocks.filter(
+      (product) =>
+        selectedCategory === 'all' || product.category === selectedCategory
+    );
+    if (selectedSort === 'sale') {
+      filteredProducts = filteredProducts.filter((product) => product.sale);
+    } else if (selectedSort === 'featured') {
+      filteredProducts = filteredProducts.filter((product) => product.featured);
+    } else if (selectedSort === 'priceHigh') {
+      filteredProducts = filteredProducts.sort((a, b) => b.price - a.price);
+    } else if (selectedSort === 'priceLow') {
+      filteredProducts = filteredProducts.sort((a, b) => a.price - b.price);
+    }
+    return filteredProducts;
+  };
+
+  const filteredProducts = getFilteredProducts();
+  const visibleProducts = filteredProducts.slice(0, visibleCount);
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
+    setVisibleCount(8);
   };
 
   const handleSortChange = (sort: string) => {
     setSelectedSort(sort);
+    setVisibleCount(8);
   };
 
-  const clearCategoryFilter = () => setSelectedCategory('all');
-  const clearSortFilter = () => setSelectedSort('all');
-
-  const filteredCategoryResults = ProductMocks.filter((product: Product) => {
-    return selectedCategory === 'all' || product.category === selectedCategory;
-  });
-
-  let filteredResults = filteredCategoryResults;
-
-  if (selectedSort === 'sale') {
-    filteredResults = filteredResults.filter(
-      (product: Product) => product.sale
-    );
-  } else if (selectedSort === 'featured') {
-    filteredResults = filteredResults.filter(
-      (product: Product) => product.featured
-    );
-  } else if (selectedSort === 'priceHigh') {
-    filteredResults = [...filteredResults].sort(
-      (firstProduct, secondProduct) => secondProduct.price - firstProduct.price
-    );
-  } else if (selectedSort === 'priceLow') {
-    filteredResults = [...filteredResults].sort(
-      (firstProduct, secondProduct) => firstProduct.price - secondProduct.price
-    );
-  }
-
-  const sortedProductResults = filteredResults;
+  const showMoreProducts = () => {
+    setVisibleCount((prev) => prev + 8);
+  };
 
   return (
-    <div className="py-12 px-2 md:px-10 w-full lg:max-w-5xl xl:max-w-7xl mx-auto">
+    <div className="py-12 mb-8 px-2 md:px-10 w-full lg:max-w-5xl xl:max-w-7xl mx-auto">
       <header className="p-4 text-center">
         <h3 className="font-bold">Products</h3>
       </header>
@@ -85,12 +83,15 @@ export default function Products() {
             value={selectedCategory}
             onChange={(event) => handleCategoryChange(event.target.value)}
           />
-          <CustomButton variant="text" onClick={clearCategoryFilter}>
+          <CustomButton
+            variant="text"
+            onClick={() => setSelectedCategory('all')}
+          >
             Clear Category
           </CustomButton>
         </div>
         <div className="flex flex-col-reverse md:flex-row">
-          <CustomButton variant="text" onClick={clearSortFilter}>
+          <CustomButton variant="text" onClick={() => setSelectedSort('all')}>
             Clear Sort
           </CustomButton>
           <SelectDropdown
@@ -101,16 +102,20 @@ export default function Products() {
           />
         </div>
       </div>
-      <div className="grid gap-4 md:gap-6 lg:gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {sortedProductResults.map((product: Product) => (
+      <div className="grid gap-4 md:gap-8 lg:gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {visibleProducts.map((product: Product) => (
           <div key={product.id} className="flex justify-center">
             <ProductCard product={product} />
           </div>
         ))}
       </div>
-      <div className="py-8 text-center">
-        <CustomButton variant="primary">Show More</CustomButton>
-      </div>
+      {visibleCount < filteredProducts.length && (
+        <div className="py-8 text-center">
+          <CustomButton variant="primary" onClick={showMoreProducts}>
+            Show More
+          </CustomButton>
+        </div>
+      )}
     </div>
   );
 }

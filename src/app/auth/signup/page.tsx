@@ -9,7 +9,7 @@ import Link from 'next/link';
 const SignUpPage = () => {
   return (
     <ThemeProvider theme={theme}>
-      <div className="h-full flex flex-col py-24 m-auto gap-4 max-w-[275px] md:max-w-[575px]">
+      <div className="h-full flex flex-col py-24 m-auto gap-4 max-w-[275px] md:max-w-[550px]">
         <h3 className="text-center">Sign Up</h3>
         <p className="text-center">Please fill in the information below</p>
         <TextField

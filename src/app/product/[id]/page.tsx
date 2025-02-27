@@ -4,15 +4,10 @@ import { Products as ProductsMock } from '@/services/mocks/products';
 import Image from 'next/image';
 import ProductSlider from '@/components/ui/ProductSlider';
 
-type ProductProps = Readonly<{
-  params: {
-    id: string;
-  };
-}>;
-
-export default async function Product({ params }: ProductProps) {
-  const { id } = await params;
-
+// Change type to PageProps and async/await once DB is implemented
+export default function Product(props: any) {
+  const params = props.params as { id: string };
+  const id = params.id;
   const product = ProductsMock.find((p) => p.id === id);
 
   if (!product) {
@@ -40,8 +35,12 @@ export default async function Product({ params }: ProductProps) {
   return (
     <div className="pt-12">
       <div className="py-12 flex justify-center gap-20">
-        <div></div>
         <div>
+          {product.sale && (
+            <div className="rounded-lg mb-4 bg-wearit-red text-wearit-white w-[80px] p-1 text-center">
+              Sale
+            </div>
+          )}
           <div className="w-[350px] h-[350px] relative">
             <Image
               src={product.imageUrl}
@@ -63,7 +62,18 @@ export default async function Product({ params }: ProductProps) {
           <header>
             <h3>{product.name}</h3>
           </header>
-          <p className="subtitle-1 text-neutral-500">${product.price}</p>
+          {product.sale ? (
+            <div className="flex gap-2">
+              <p className="subtitle-1 text-neutral-500 line-through">
+                ${product.price}
+              </p>
+              <p className="subtitle-1 text-wearit-red">
+                ${(product.price - 5).toFixed(2)}
+              </p>
+            </div>
+          ) : (
+            <p className="subtitle-1 text-neutral-500">${product.price}</p>
+          )}
           <BoxSelect {...colorSelect} />
           <BoxSelect {...sizeSelect} />
           <CustomButton variant="primary">Add to Cart</CustomButton>
@@ -92,8 +102,8 @@ export default async function Product({ params }: ProductProps) {
   );
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return ProductsMock.map((product) => ({
-    id: product.id,
+    id: product.id.toString(),
   }));
 }

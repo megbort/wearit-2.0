@@ -18,8 +18,9 @@ const product: Product = {
   id: '01',
   name: 'Store Item 1',
   price: 29.99,
+  sale: true,
   imageUrl:
-    'https://res.cloudinary.com/dm1yyjg7i/image/upload/v1726339974/clothing-item-01_ecaf4s.jpg',
+    'https://res.cloudinary.com/dm1yyjg7i/image/upload/v1726339974/wearit/clothing-item-02_u2qn0c.jpg',
   colors: ['black', 'white', 'blue'],
   sizes: ['xs', 'sm', 'm', 'l', 'xl'],
   details: [

@@ -14,7 +14,7 @@ const meta: Meta<typeof CategoryCard> = {
 const category: Category = {
   title: 'Shop New Arrivals',
   imageUrl:
-    'https://res.cloudinary.com/dm1yyjg7i/image/upload/v1725586090/pexels-alteredsnaps-14663663_pjqwsy.jpg',
+    'https://res.cloudinary.com/dm1yyjg7i/image/upload/wearit/pexels-alteredsnaps-14663631_inzowa.jpg',
 };
 
 export default meta;
