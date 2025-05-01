@@ -34,7 +34,7 @@ export default function Product(props: any) {
 
   return (
     <div className="pt-12">
-      <div className="py-12 flex justify-center gap-20">
+      <div className="py-12 flex flex-col-reverse items-center justify-center gap-20 md:flex-row">
         <div>
           {product.sale && (
             <div className="rounded-lg mb-4 bg-wearit-red text-wearit-white w-[80px] p-1 text-center">
@@ -76,7 +76,9 @@ export default function Product(props: any) {
           )}
           <BoxSelect {...colorSelect} />
           <BoxSelect {...sizeSelect} />
-          <CustomButton variant="primary">Add to Cart</CustomButton>
+          <div className="max-[250px]">
+            <CustomButton variant="primary">Add to Cart</CustomButton>
+          </div>
           <p className="text-caption underline hover:cursor-pointer hover:text-wearit-red">
             Size Chart
           </p>
@@ -92,7 +94,7 @@ export default function Product(props: any) {
           </div>
         </div>
       </div>
-      <div className="max-w-[600px] mx-auto py-20">
+      <div className="max-w-[600px] mx-auto py-20 hidden md:block">
         <p className="text-center subtitle-1 pb-6">
           You might like some of these
         </p>
