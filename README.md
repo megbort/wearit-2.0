@@ -12,7 +12,7 @@ Hope you enjoy exploring!
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -33,17 +33,22 @@ npm run build
 
 # Start production server
 npm start
+
+# Start storybook server
+npm run storybook
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the app.
+Open [http://localhost:6006](http://localhost:6006) to view storybook.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Next.js** with **TypeScript**
 - **Tailwind CSS** for styling
 - **Storybook** for UI development
+- **Cloudinary** for cloud-based image storage and delivery
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
@@ -58,6 +63,6 @@ src/
 └── utils/            # Utility functions
 ```
 
-## 🔗 Backend Integration
+## Backend
 
-This frontend is designed to work seamlessly with a Node.js/GraphQL backend, but can be adapted for any API. Product/category data is currently mocked for demo purposes.
+This frontend is designed to work seamlessly with a Node.js/GraphQL backend, but can be adapted for any API. Product/category data is currently mocked for demo purposes. Backend is in development and will be integrated soon!

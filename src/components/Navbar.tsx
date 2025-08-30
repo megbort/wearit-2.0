@@ -15,6 +15,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import theme from '../theme/theme';
 import { ThemeProvider } from '@emotion/react';
+import CartDrawer from './CartDrawer';
 
 export default function Navbar() {
   const [mobileMenuAnchor, setMobileMenuAnchor] = useState<null | HTMLElement>(
@@ -22,6 +23,7 @@ export default function Navbar() {
   );
   const [accountMenuAnchor, setAccountMenuAnchor] =
     useState<null | HTMLElement>(null);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const open = Boolean(mobileMenuAnchor);
   const userMenuOpen = Boolean(accountMenuAnchor);
 
@@ -38,11 +40,22 @@ export default function Navbar() {
     setAccountMenuAnchor(null);
   };
 
+  const handleCartOpen = () => {
+    setIsCartOpen(true);
+  };
+
+  const handleCartClose = () => {
+    setIsCartOpen(false);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <header className="w-full">
         <div className="bg-wearit-yellow flex justify-center py-1 text-caption">
-          <p>Free shipping for orders over 50$ 🔥🔥🔥</p>
+          <p>
+            This website is for demo purposes only. It&apos;s functional, but is
+            just for fun. Feel free to explore and experiment! 🔥🔥🔥
+          </p>
         </div>
         <nav className="bg-wearit-black flex items-center justify-between p-4 md:p-8 h-[100px]">
           <div>
@@ -184,9 +197,13 @@ export default function Navbar() {
               icon={faCartShopping}
               style={{ fontSize: '22px' }}
               className="text-wearit-red hover:text-wearit-green hover:cursor-pointer"
+              onClick={handleCartOpen}
             />
           </div>
         </nav>
+
+        {/* Cart Drawer */}
+        <CartDrawer open={isCartOpen} onClose={handleCartClose} />
       </header>
     </ThemeProvider>
   );

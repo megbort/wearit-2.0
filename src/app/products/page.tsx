@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductCard from '../../components/ui/ProductCard';
+import ProductCardSkeleton from '../../components/ui/ProductCardSkeleton';
 import { Products as ProductMocks } from '@/services/mocks/products';
 import { Product } from '@/services/models/product';
 import CustomButton from '../../components/ui/Button';
@@ -35,6 +36,37 @@ export default function Products() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedSort, setSelectedSort] = useState<string>('all');
   const [visibleCount, setVisibleCount] = useState(8);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Reset loading when filters change
+  const handleCategoryChange = (category: string) => {
+    setIsLoading(true);
+    setSelectedCategory(category);
+    setVisibleCount(8);
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+  };
+
+  const handleSortChange = (sort: string) => {
+    setIsLoading(true);
+    setSelectedSort(sort);
+    setVisibleCount(8);
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+  };
 
   const getFilteredProducts = () => {
     let filteredProducts = ProductMocks.filter(
@@ -56,18 +88,16 @@ export default function Products() {
   const filteredProducts = getFilteredProducts();
   const visibleProducts = filteredProducts.slice(0, visibleCount);
 
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category);
-    setVisibleCount(8);
-  };
-
-  const handleSortChange = (sort: string) => {
-    setSelectedSort(sort);
-    setVisibleCount(8);
-  };
-
   const showMoreProducts = () => {
     setVisibleCount((prev) => prev + 8);
+  };
+
+  const renderSkeletons = () => {
+    return Array.from({ length: visibleCount }, (_, index) => (
+      <div key={`skeleton-${index}`} className="flex justify-center">
+        <ProductCardSkeleton />
+      </div>
+    ));
   };
 
   return (
@@ -103,11 +133,13 @@ export default function Products() {
         </div>
       </div>
       <div className="grid gap-4 md:gap-8 lg:gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {visibleProducts.map((product: Product) => (
-          <div key={product.id} className="flex justify-center">
-            <ProductCard product={product} />
-          </div>
-        ))}
+        {isLoading
+          ? renderSkeletons()
+          : visibleProducts.map((product: Product) => (
+              <div key={product.id} className="flex justify-center">
+                <ProductCard product={product} />
+              </div>
+            ))}
       </div>
       {visibleCount < filteredProducts.length && (
         <div className="py-8 text-center">
