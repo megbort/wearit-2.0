@@ -16,16 +16,26 @@ import MenuItem from '@mui/material/MenuItem';
 import theme from '../theme/theme';
 import { ThemeProvider } from '@emotion/react';
 import CartDrawer from './CartDrawer';
+import useStore from '../services/store/useStore';
+import { useLogout } from '../hooks/useAuth';
 
 export default function Navbar() {
+  // Menu state management
   const [mobileMenuAnchor, setMobileMenuAnchor] = useState<null | HTMLElement>(
     null
   );
   const [accountMenuAnchor, setAccountMenuAnchor] =
     useState<null | HTMLElement>(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+  // Computed menu states
   const open = Boolean(mobileMenuAnchor);
   const userMenuOpen = Boolean(accountMenuAnchor);
+
+  // Authentication state and actions
+  const user = useStore((state) => state.user);
+  const isAuthenticated = useStore((state) => state.isAuthenticated);
+  const { logout } = useLogout();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setMobileMenuAnchor(event.currentTarget);
@@ -46,6 +56,11 @@ export default function Navbar() {
 
   const handleCartClose = () => {
     setIsCartOpen(false);
+  };
+
+  const handleLogout = () => {
+    logout();
+    handleClose();
   };
 
   return (
@@ -178,20 +193,40 @@ export default function Navbar() {
               }}
               slotProps={{
                 paper: {
-                  className: 'bg-wearit-white w-[150px]',
+                  className: 'bg-wearit-white w-[180px]',
                 },
               }}
             >
-              <MenuItem onClick={handleClose}>
-                <Link href={'/auth/login'} className="w-full">
-                  Login
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <Link href={'/auth/signup'} className="w-full">
-                  Sign Up
-                </Link>
-              </MenuItem>
+              {isAuthenticated && user
+                ? [
+                    // Authenticated - show user info and logout
+                    <MenuItem key="user-info" disabled>
+                      <div>
+                        <div className="font-semibold text-sm">
+                          {user.firstName} {user.lastName}
+                        </div>
+                        <div className="text-xs text-gray-600">
+                          {user.email}
+                        </div>
+                      </div>
+                    </MenuItem>,
+                    <MenuItem key="logout" onClick={handleLogout}>
+                      <span className="text-wearit-black">Logout</span>
+                    </MenuItem>,
+                  ]
+                : [
+                    // Not authenticated - show login/signup
+                    <MenuItem key="login" onClick={handleClose}>
+                      <Link href={'/auth/login'} className="w-full">
+                        Login
+                      </Link>
+                    </MenuItem>,
+                    <MenuItem key="signup" onClick={handleClose}>
+                      <Link href={'/auth/signup'} className="w-full">
+                        Sign Up
+                      </Link>
+                    </MenuItem>,
+                  ]}
             </Menu>
             <FontAwesomeIcon
               icon={faCartShopping}

@@ -7,10 +7,6 @@ import Category from '@/components/Categories';
 import cloudinaryLoader from '../utils/custom-image-loader';
 
 export default function Home() {
-  const handleClick = () => {
-    console.log('Hello');
-  };
-
   return (
     <>
       <div className="relative h-[calc(100vh-140px)] overflow-hidden">
@@ -30,9 +26,7 @@ export default function Home() {
           <p className="subtitle-1 text-wearit-white py-4">
             Now available for iPhone and Android
           </p>
-          <CustomButton variant="primary" onClick={handleClick}>
-            Download Now
-          </CustomButton>
+          <CustomButton variant="primary">Download Now</CustomButton>
         </div>
       </div>
       <Featured></Featured>

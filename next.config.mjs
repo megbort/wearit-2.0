@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  ...(process.env.NODE_ENV === 'production' && { output: 'export' }),
   images: {
     loader: 'custom',
     loaderFile: './src/utils/custom-image-loader.ts',

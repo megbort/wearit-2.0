@@ -1,29 +1,43 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import CustomButton from '../../../components/ui/Button';
 import TextField from '@mui/material/TextField';
 import { ThemeProvider } from '@emotion/react';
 import theme from '../../../theme/theme';
 import Link from 'next/link';
-import useStore from '../../../services/store/useStore';
+import { useLogin } from '../../../hooks/useAuth';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const setUserEmail = useStore((state) => state.setUserEmail);
+  const router = useRouter();
 
-  const handleLogin = () => {
+  const { login, loading } = useLogin();
+
+  const handleLogin = async () => {
     if (!email || !password) {
       setError('Both fields are required.');
       return;
     }
 
-    setUserEmail(email);
-    console.log('Logged in as:', email);
+    try {
+      setError('');
+      await login(email, password);
+      router.push('/'); // redirect home page after login
+    } catch (error: unknown) {
+      console.error('Login error:', error);
 
-    setError('');
+      if (error instanceof Error) {
+        setError(error.message || 'Login failed. Please try again.');
+      } else if (typeof error === 'string') {
+        setError(error);
+      } else {
+        setError('An unexpected error occurred. Please try again.');
+      }
+    }
   };
 
   return (
@@ -50,8 +64,12 @@ const LoginPage = () => {
           className="bg-wearit-white opacity-90 rounded-md"
         />
         {error && <p className="text-red-500 text-sm">{error}</p>}
-        <CustomButton variant="primary" onClick={handleLogin}>
-          Login
+        <CustomButton
+          variant="primary"
+          onClick={handleLogin}
+          disabled={loading}
+        >
+          {loading ? 'Logging in...' : 'Login'}
         </CustomButton>
         <div>
           <p>
