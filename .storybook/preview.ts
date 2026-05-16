@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/nextjs-vite';
 import '../src/app/globals.scss';
 
 const preview: Preview = {
@@ -8,6 +8,9 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
+    },
+    nextjs: {
+      appDirectory: true,
     },
   },
 };

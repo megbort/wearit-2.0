@@ -29,6 +29,7 @@ export default function Footer() {
             alt="WearIt Logo"
             height={175}
             width={175}
+            style={{ height: 'auto' }}
           />
           <div className="flex justify-center pt-2 gap-6">
             <FontAwesomeIcon

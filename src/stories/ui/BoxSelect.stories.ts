@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import BoxSelect from '../../components/ui/BoxSelect';
 
 const meta: Meta<typeof BoxSelect> = {

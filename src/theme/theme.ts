@@ -1,21 +1,14 @@
 import { createTheme } from '@mui/material/styles';
-import { Comfortaa } from 'next/font/google';
-
-const comfortaa = Comfortaa({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  display: 'swap',
-});
 
 const theme = createTheme({
   typography: {
-    fontFamily: `${comfortaa.style.fontFamily}, sans-serif`,
+    fontFamily: `'Comfortaa', sans-serif`,
   },
   components: {
     MuiMenuItem: {
       styleOverrides: {
         root: {
-          fontFamily: `${comfortaa.style.fontFamily}, sans-serif`,
+          fontFamily: `'Comfortaa', sans-serif`,
           '&:hover': {
             backgroundColor: '#76dbbf',
           },
@@ -25,7 +18,7 @@ const theme = createTheme({
     MuiMenu: {
       styleOverrides: {
         list: {
-          fontFamily: `${comfortaa.style.fontFamily}, sans-serif`,
+          fontFamily: `'Comfortaa', sans-serif`,
         },
       },
     },

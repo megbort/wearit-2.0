@@ -4,9 +4,8 @@ import { Products as ProductsMock } from '@/services/mocks/products';
 import Image from 'next/image';
 import ProductSlider from '@/components/ui/ProductSlider';
 
-// Change type to PageProps and async/await once DB is implemented
-export default function Product(props: any) {
-  const params = props.params as { id: string };
+export default async function Product(props: any) {
+  const params = await props.params as { id: string };
   const id = params.id;
   const product = ProductsMock.find((p) => p.id === id);
 

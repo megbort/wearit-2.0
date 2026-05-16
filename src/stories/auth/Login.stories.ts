@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import LoginPage from '@/app/auth/login/page';
 
 const meta: Meta<typeof LoginPage> = {

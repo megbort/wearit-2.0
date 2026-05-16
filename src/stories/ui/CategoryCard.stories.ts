@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import CategoryCard from '../../components/ui/CategoryCard';
 import { Category } from '@/services/models/category';
 
