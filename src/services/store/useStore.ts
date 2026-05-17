@@ -8,6 +8,11 @@ interface User {
   email: string;
 }
 
+interface Notification {
+  message: string;
+  severity: 'success' | 'error' | 'info' | 'warning';
+}
+
 interface StoreState {
   // Cart/Shopping state
   count: number;
@@ -26,6 +31,11 @@ interface StoreState {
   login: (user: User, token: string) => void;
   logout: () => void;
   setLoading: (loading: boolean) => void;
+
+  // Notification state
+  notification: Notification | null;
+  setNotification: (notification: Notification) => void;
+  clearNotification: () => void;
 }
 
 const useStore = create<StoreState>()(
@@ -71,6 +81,11 @@ const useStore = create<StoreState>()(
         }
       },
       setLoading: (loading) => set({ isLoading: loading }),
+
+      // Notification actions
+      notification: null,
+      setNotification: (notification) => set({ notification }),
+      clearNotification: () => set({ notification: null }),
     }),
     {
       name: 'app-storage',

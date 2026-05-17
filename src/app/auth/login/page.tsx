@@ -2,41 +2,38 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import CustomButton from '../../../components/ui/Button';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 import { ThemeProvider } from '@emotion/react';
 import theme from '../../../theme/theme';
 import Link from 'next/link';
 import { useLogin } from '../../../hooks/useAuth';
+import useStore from '../../../services/store/useStore';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [localError, setLocalError] = useState('');
   const router = useRouter();
-
   const { login, loading } = useLogin();
+  const { setNotification } = useStore();
 
   const handleLogin = async () => {
     if (!email || !password) {
-      setError('Both fields are required.');
+      setLocalError('Both fields are required.');
       return;
     }
 
     try {
-      setError('');
+      setLocalError('');
       await login(email, password);
-      router.push('/'); // redirect home page after login
+      setNotification({ message: 'Logged in successfully!', severity: 'success' });
+      router.push('/');
     } catch (error: unknown) {
-      console.error('Login error:', error);
-
-      if (error instanceof Error) {
-        setError(error.message || 'Login failed. Please try again.');
-      } else if (typeof error === 'string') {
-        setError(error);
-      } else {
-        setError('An unexpected error occurred. Please try again.');
-      }
+      const message =
+        error instanceof Error ? error.message : 'Login failed. Please try again.';
+      setLocalError(message);
     }
   };
 
@@ -60,17 +57,26 @@ const LoginPage = () => {
           color="secondary"
           type="password"
           value={password}
-          onChange={(event) => setPassword(event.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
           className="bg-wearit-white opacity-90 rounded-md"
         />
-        {error && <p className="text-red-500 text-sm">{error}</p>}
-        <CustomButton
-          variant="primary"
+        <Button
+          variant="contained"
           onClick={handleLogin}
           disabled={loading}
+          startIcon={loading ? <CircularProgress size={16} color="inherit" /> : null}
+          sx={{
+            fontFamily: `'Comfortaa', sans-serif`,
+            backgroundColor: '#ff3d5c',
+            color: '#fff',
+            textTransform: 'none',
+            '&:hover': { backgroundColor: '#76dbbf' },
+            '&.Mui-disabled': { opacity: 0.7, backgroundColor: '#ff3d5c', color: '#fff' },
+          }}
         >
           {loading ? 'Logging in...' : 'Login'}
-        </CustomButton>
+        </Button>
+        {localError && <p className="text-red-500 text-sm">{localError}</p>}
         <div>
           <p>
             Don&apos;t have an account?&nbsp;

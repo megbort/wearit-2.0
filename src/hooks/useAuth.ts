@@ -1,6 +1,7 @@
-import { LOGIN_MUTATION, GET_ME_QUERY } from '../services/graphql/queries/auth';
+import { LOGIN_MUTATION, REGISTER_MUTATION, GET_ME_QUERY } from '../services/graphql/queries/auth';
 import type {
   LoginResponse,
+  RegisterResponse,
   MeResponse,
 } from '../services/graphql/models/auth';
 import useStore from '../services/store/useStore';
@@ -31,6 +32,40 @@ export const useLogin = () => {
 
   return {
     login: loginUser,
+    loading: isLoading,
+  };
+};
+
+export const useRegister = () => {
+  const { login: loginStore, setLoading, isLoading } = useStore();
+
+  const registerUser = async (
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string
+  ) => {
+    try {
+      setLoading(true);
+      const result = await client.mutate<RegisterResponse>({
+        mutation: REGISTER_MUTATION,
+        variables: { firstName, lastName, email, password },
+      });
+
+      if (result.data?.register) {
+        loginStore(result.data.register.user, result.data.register.token);
+      }
+      setLoading(false);
+      return result.data;
+    } catch (err) {
+      console.error('Registration failed:', err);
+      setLoading(false);
+      throw err;
+    }
+  };
+
+  return {
+    register: registerUser,
     loading: isLoading,
   };
 };

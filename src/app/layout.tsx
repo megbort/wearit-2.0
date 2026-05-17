@@ -3,6 +3,7 @@ import './globals.scss';
 import Navbar from '@/components/Navbar';
 import { Comfortaa } from 'next/font/google';
 import Footer from '@/components/Footer';
+import GlobalToast from '@/components/GlobalToast';
 
 const comfortaa = Comfortaa({
   subsets: ['latin'],
@@ -28,6 +29,7 @@ export default function RootLayout({
           <Navbar />
           <div className="flex-grow">{children}</div>
           <Footer />
+          <GlobalToast />
         </main>
       </body>
     </html>
