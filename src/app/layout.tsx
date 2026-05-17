@@ -6,7 +6,6 @@ import Footer from '@/components/Footer';
 import GlobalToast from '@/components/GlobalToast';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import { cookies } from 'next/headers';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
 const comfortaa = Comfortaa({
@@ -27,13 +26,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const messages = await getMessages();
-  const cookieStore = await cookies();
-  const theme = (cookieStore.get('theme')?.value ?? 'light') as 'light' | 'dark';
 
   return (
-    <html lang="en" className={theme === 'dark' ? 'dark' : ''} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={comfortaa.className}>
-        <ThemeProvider initialTheme={theme}>
+        <script dangerouslySetInnerHTML={{ __html: `if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark');` }} />
+        <ThemeProvider>
           <NextIntlClientProvider messages={messages}>
             <main className="h-full flex flex-col">
               <Navbar />

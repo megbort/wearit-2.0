@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -14,19 +14,18 @@ const ThemeContext = createContext<ThemeContextValue>({
   setTheme: () => {},
 });
 
-export function ThemeProvider({
-  children,
-  initialTheme,
-}: {
-  children: React.ReactNode;
-  initialTheme: Theme;
-}) {
-  const [resolvedTheme, setResolvedTheme] = useState<Theme>(initialTheme);
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const [resolvedTheme, setResolvedTheme] = useState<Theme>('light');
+
+  useEffect(() => {
+    const saved = localStorage.getItem('theme') as Theme | null;
+    if (saved) setResolvedTheme(saved);
+  }, []);
 
   const setTheme = (theme: Theme) => {
     setResolvedTheme(theme);
+    localStorage.setItem('theme', theme);
     document.documentElement.classList.toggle('dark', theme === 'dark');
-    document.cookie = `theme=${theme}; path=/; max-age=31536000; SameSite=Lax`;
   };
 
   return (
