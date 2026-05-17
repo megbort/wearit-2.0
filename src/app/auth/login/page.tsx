@@ -10,8 +10,10 @@ import theme from '../../../theme/theme';
 import Link from 'next/link';
 import { useLogin } from '../../../hooks/useAuth';
 import useStore from '../../../services/store/useStore';
+import { useTranslations } from 'next-intl';
 
 const LoginPage = () => {
+  const t = useTranslations('LoginPage');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [localError, setLocalError] = useState('');
@@ -21,18 +23,18 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     if (!email || !password) {
-      setLocalError('Both fields are required.');
+      setLocalError(t('errorRequired'));
       return;
     }
 
     try {
       setLocalError('');
       await login(email, password);
-      setNotification({ message: 'Logged in successfully!', severity: 'success' });
+      setNotification({ message: t('successMessage'), severity: 'success' });
       router.push('/');
     } catch (error: unknown) {
       const message =
-        error instanceof Error ? error.message : 'Login failed. Please try again.';
+        error instanceof Error ? error.message : t('errorFallback');
       setLocalError(message);
     }
   };
@@ -40,10 +42,10 @@ const LoginPage = () => {
   return (
     <ThemeProvider theme={theme}>
       <div className="h-full flex flex-col py-24 m-auto gap-4 max-w-[275px] md:max-w-[550px]">
-        <h3 className="text-center">Login</h3>
-        <p className="text-center">Enter your email and password to login</p>
+        <h3 className="text-center">{t('heading')}</h3>
+        <p className="text-center">{t('subheading')}</p>
         <TextField
-          label="Email"
+          label={t('email')}
           variant="outlined"
           color="secondary"
           type="email"
@@ -52,7 +54,7 @@ const LoginPage = () => {
           className="bg-wearit-white opacity-90 rounded-md"
         />
         <TextField
-          label="Password"
+          label={t('password')}
           variant="outlined"
           color="secondary"
           type="password"
@@ -74,14 +76,14 @@ const LoginPage = () => {
             '&.Mui-disabled': { opacity: 0.7, backgroundColor: '#ff3d5c', color: '#fff' },
           }}
         >
-          {loading ? 'Logging in...' : 'Login'}
+          {loading ? t('loggingIn') : t('loginButton')}
         </Button>
         {localError && <p className="text-red-500 text-sm">{localError}</p>}
         <div>
           <p>
-            Don&apos;t have an account?&nbsp;
+            {t('noAccount')}&nbsp;
             <Link href={'signup'} className="text-wearit-green">
-              Sign up
+              {t('signUp')}
             </Link>
           </p>
         </div>

@@ -10,8 +10,10 @@ import theme from '../../../theme/theme';
 import Link from 'next/link';
 import { useRegister } from '../../../hooks/useAuth';
 import useStore from '../../../services/store/useStore';
+import { useTranslations } from 'next-intl';
 
 const SignUpPage = () => {
+  const t = useTranslations('SignUpPage');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -23,18 +25,18 @@ const SignUpPage = () => {
 
   const handleSubmit = async () => {
     if (!firstName || !lastName || !email || !password) {
-      setLocalError('All fields are required.');
+      setLocalError(t('errorRequired'));
       return;
     }
 
     try {
       setLocalError('');
       await register(firstName, lastName, email, password);
-      setNotification({ message: 'Account created successfully!', severity: 'success' });
+      setNotification({ message: t('successMessage'), severity: 'success' });
       router.push('/');
     } catch (error: unknown) {
       const message =
-        error instanceof Error ? error.message : 'Registration failed. Please try again.';
+        error instanceof Error ? error.message : t('errorFallback');
       setLocalError(message);
     }
   };
@@ -42,10 +44,10 @@ const SignUpPage = () => {
   return (
     <ThemeProvider theme={theme}>
       <div className="h-full flex flex-col py-24 m-auto gap-4 max-w-[275px] md:max-w-[550px]">
-        <h3 className="text-center">Sign Up</h3>
-        <p className="text-center">Please fill in the information below</p>
+        <h3 className="text-center">{t('heading')}</h3>
+        <p className="text-center">{t('subheading')}</p>
         <TextField
-          label="First Name"
+          label={t('firstName')}
           variant="outlined"
           color="secondary"
           className="bg-wearit-white opacity-90 rounded-md"
@@ -53,7 +55,7 @@ const SignUpPage = () => {
           onChange={(e) => setFirstName(e.target.value)}
         />
         <TextField
-          label="Last Name"
+          label={t('lastName')}
           variant="outlined"
           color="secondary"
           className="bg-wearit-white opacity-90 rounded-md"
@@ -61,7 +63,7 @@ const SignUpPage = () => {
           onChange={(e) => setLastName(e.target.value)}
         />
         <TextField
-          label="Email"
+          label={t('email')}
           variant="outlined"
           color="secondary"
           className="bg-wearit-white opacity-90 rounded-md"
@@ -69,7 +71,7 @@ const SignUpPage = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <TextField
-          label="Password"
+          label={t('password')}
           type="password"
           variant="outlined"
           color="secondary"
@@ -91,14 +93,14 @@ const SignUpPage = () => {
             '&.Mui-disabled': { opacity: 0.7, backgroundColor: '#ff3d5c', color: '#fff' },
           }}
         >
-          {loading ? 'Creating Account...' : 'Create Account'}
+          {loading ? t('creatingAccount') : t('createAccount')}
         </Button>
         {localError && <p className="text-red-500 text-sm">{localError}</p>}
         <div>
           <p>
-            Already have an account?&nbsp;
+            {t('haveAccount')}&nbsp;
             <Link href={'login'} className="text-wearit-green">
-              Login
+              {t('login')}
             </Link>
           </p>
         </div>

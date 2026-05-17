@@ -7,8 +7,10 @@ import { Product } from '@/services/models/product';
 import CustomButton from './ui/Button';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 
 export default function Featured() {
+  const t = useTranslations('Featured');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -28,7 +30,7 @@ export default function Featured() {
 
   return (
     <div className="py-12 flex flex-col items-center">
-      <h3 className="pb-8 px-4 font-bold">New Featured Items ✨</h3>
+      <h3 className="pb-8 px-4 font-bold">{t('heading')}</h3>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
         {isLoading
           ? renderSkeletons()
@@ -38,7 +40,7 @@ export default function Featured() {
       </div>
       <div className="py-8">
         <Link href={'products'}>
-          <CustomButton variant="primary">View More</CustomButton>
+          <CustomButton variant="primary">{t('viewMore')}</CustomButton>
         </Link>
       </div>
     </div>

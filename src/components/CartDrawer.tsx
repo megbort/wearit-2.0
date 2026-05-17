@@ -4,6 +4,7 @@ import React from 'react';
 import { Drawer, Typography, IconButton } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useTranslations } from 'next-intl';
 
 interface CartDrawerProps {
   open: boolean;
@@ -11,6 +12,8 @@ interface CartDrawerProps {
 }
 
 const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
+  const t = useTranslations('CartDrawer');
+
   return (
     <Drawer
       anchor="right"
@@ -28,7 +31,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
             className="font-bold text-wearit-black"
             style={{ fontFamily: 'var(--font-comfortaa)' }}
           >
-            Shopping Cart
+            {t('title')}
           </Typography>
           <IconButton
             onClick={onClose}
@@ -41,7 +44,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
         {/* Cart Content */}
         <div className="flex-1">
           <Typography className="text-wearit-grey-darker text-center mt-8">
-            Your cart is empty
+            {t('empty')}
           </Typography>
         </div>
 
@@ -49,7 +52,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
         <div className="border-t border-wearit-grey pt-4 mt-4">
           {/* Discounts */}
           <div className="flex justify-between items-center mb-2">
-            <Typography className="text-wearit-black">Discount</Typography>
+            <Typography className="text-wearit-black">{t('discount')}</Typography>
             <Typography className="text-wearit-green font-bold">
               -$0.00
             </Typography>
@@ -62,7 +65,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
               className="font-bold text-wearit-black"
               style={{ fontFamily: 'var(--font-comfortaa)' }}
             >
-              Total
+              {t('total')}
             </Typography>
             <Typography
               variant="h6"
@@ -75,12 +78,12 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
 
           {/* Checkout Button */}
           <button className="w-full bg-wearit-red hover:bg-wearit-pink text-white font-bold py-3 px-4 rounded transition-colors duration-200 mb-3">
-            Proceed to Checkout
+            {t('checkout')}
           </button>
 
           {/* Shipping Note */}
           <Typography className="text-wearit-grey-darker text-sm">
-            Taxes and shipping calculated at checkout
+            {t('taxNote')}
           </Typography>
         </div>
       </div>

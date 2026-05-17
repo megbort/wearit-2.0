@@ -3,14 +3,16 @@ import CustomButton from '@/components/ui/Button';
 import { Products as ProductsMock } from '@/services/mocks/products';
 import Image from 'next/image';
 import ProductSlider from '@/components/ui/ProductSlider';
+import { getTranslations } from 'next-intl/server';
 
 export default async function Product(props: any) {
   const params = await props.params as { id: string };
   const id = params.id;
   const product = ProductsMock.find((p) => p.id === id);
+  const t = await getTranslations('ProductPage');
 
   if (!product) {
-    return <div>Product not found</div>;
+    return <div>{t('notFound')}</div>;
   }
 
   const colorSelect = {
@@ -37,7 +39,7 @@ export default async function Product(props: any) {
         <div>
           {product.sale && (
             <div className="rounded-lg mb-4 bg-wearit-red text-wearit-white w-[80px] p-1 text-center">
-              Sale
+              {t('sale')}
             </div>
           )}
           <div className="w-[350px] h-[350px] relative">
@@ -76,13 +78,13 @@ export default async function Product(props: any) {
           <BoxSelect {...colorSelect} />
           <BoxSelect {...sizeSelect} />
           <div className="max-[250px]">
-            <CustomButton variant="primary">Add to Cart</CustomButton>
+            <CustomButton variant="primary">{t('addToCart')}</CustomButton>
           </div>
           <p className="text-caption underline hover:cursor-pointer hover:text-wearit-red">
-            Size Chart
+            {t('sizeChart')}
           </p>
           <div>
-            <p className="subtitle-1">Details:</p>
+            <p className="subtitle-1">{t('details')}</p>
             <ul className="list-disc">
               {product.details.map((item) => (
                 <li className="text-body-1 ml-4" key={item}>
@@ -94,9 +96,7 @@ export default async function Product(props: any) {
         </div>
       </div>
       <div className="max-w-[600px] mx-auto py-20 hidden md:block">
-        <p className="text-center subtitle-1 pb-6">
-          You might like some of these
-        </p>
+        <p className="text-center subtitle-1 pb-6">{t('youMightLike')}</p>
         <ProductSlider></ProductSlider>
       </div>
     </div>

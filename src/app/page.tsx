@@ -5,28 +5,27 @@ import CustomButton from '../components/ui/Button';
 import Featured from '@/components/Featured';
 import Category from '@/components/Categories';
 import cloudinaryLoader from '../utils/custom-image-loader';
+import { useTranslations } from 'next-intl';
 
 export default function Home() {
+  const t = useTranslations('HomePage');
+
   return (
     <>
       <div className="relative h-[calc(100vh-140px)] overflow-hidden">
         <Image
           loader={cloudinaryLoader}
           src="wearit/wearit-hero-v2_fdxe1s.jpg"
-          alt="Hero Image"
+          alt={t('heroAlt')}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
           style={{ objectFit: 'cover' }}
           priority
         />
         <div className="absolute top-10 left-1/2 md:top-1/4 md:left-3/4 transform -translate-x-1/2 translate-y-1/2 bg-stone-900/80 p-8 rounded w-[300px] md:w-[400px]">
-          <h3 className="text-wearit-white">
-            Discover more with the WearIt App
-          </h3>
-          <p className="subtitle-1 text-wearit-white py-4">
-            Now available for iPhone and Android
-          </p>
-          <CustomButton variant="primary">Download Now</CustomButton>
+          <h3 className="text-wearit-white">{t('appTitle')}</h3>
+          <p className="subtitle-1 text-wearit-white py-4">{t('appSubtitle')}</p>
+          <CustomButton variant="primary">{t('downloadNow')}</CustomButton>
         </div>
       </div>
       <Featured></Featured>

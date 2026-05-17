@@ -8,31 +8,34 @@ import { Product } from '@/services/models/product';
 import CustomButton from '../../components/ui/Button';
 import SelectDropdown from '../../components/ui/Select';
 import { CategoryType } from '@/services/models/category';
-
-const sortBySelect = {
-  placeholder: 'Sort by',
-  items: [
-    { value: 'all', label: 'All Products' },
-    { value: 'featured', label: 'Featured' },
-    { value: 'sale', label: 'On Sale' },
-    { value: 'priceHigh', label: 'Price high to low' },
-    { value: 'priceLow', label: 'Price low to high' },
-  ],
-};
-
-const categorySelect = {
-  placeholder: 'Category',
-  items: [
-    { value: 'all', label: 'All Categories' },
-    { value: CategoryType.Pants, label: 'Pants' },
-    { value: CategoryType.Tees, label: 'Tees' },
-    { value: CategoryType.Sweaters, label: 'Sweaters' },
-    { value: CategoryType.Shorts, label: 'Shorts' },
-    { value: CategoryType.Jackets, label: 'Jackets' },
-  ],
-};
+import { useTranslations } from 'next-intl';
 
 export default function Products() {
+  const t = useTranslations('ProductsPage');
+
+  const sortBySelect = {
+    placeholder: t('sortPlaceholder'),
+    items: [
+      { value: 'all', label: t('allProducts') },
+      { value: 'featured', label: t('featured') },
+      { value: 'sale', label: t('onSale') },
+      { value: 'priceHigh', label: t('priceHighToLow') },
+      { value: 'priceLow', label: t('priceLowToHigh') },
+    ],
+  };
+
+  const categorySelect = {
+    placeholder: t('categoryPlaceholder'),
+    items: [
+      { value: 'all', label: t('allCategories') },
+      { value: CategoryType.Pants, label: t('pants') },
+      { value: CategoryType.Tees, label: t('tees') },
+      { value: CategoryType.Sweaters, label: t('sweaters') },
+      { value: CategoryType.Shorts, label: t('shorts') },
+      { value: CategoryType.Jackets, label: t('jackets') },
+    ],
+  };
+
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedSort, setSelectedSort] = useState<string>('all');
   const [visibleCount, setVisibleCount] = useState(8);
@@ -47,7 +50,6 @@ export default function Products() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Reset loading when filters change
   const handleCategoryChange = (category: string) => {
     setIsLoading(true);
     setSelectedCategory(category);
@@ -103,7 +105,7 @@ export default function Products() {
   return (
     <div className="py-12 mb-8 px-2 md:px-10 w-full lg:max-w-5xl xl:max-w-7xl mx-auto">
       <header className="p-4 text-center">
-        <h3 className="font-bold">Products</h3>
+        <h3 className="font-bold">{t('heading')}</h3>
       </header>
       <div className="flex flex-col sm:flex-row justify-between items-center pb-12">
         <div className="flex flex-col md:flex-row">
@@ -117,12 +119,12 @@ export default function Products() {
             variant="text"
             onClick={() => setSelectedCategory('all')}
           >
-            Clear Category
+            {t('clearCategory')}
           </CustomButton>
         </div>
         <div className="flex flex-col-reverse md:flex-row">
           <CustomButton variant="text" onClick={() => setSelectedSort('all')}>
-            Clear Sort
+            {t('clearSort')}
           </CustomButton>
           <SelectDropdown
             placeholder={sortBySelect.placeholder}
@@ -144,7 +146,7 @@ export default function Products() {
       {visibleCount < filteredProducts.length && (
         <div className="py-8 text-center">
           <CustomButton variant="primary" onClick={showMoreProducts}>
-            Show More
+            {t('showMore')}
           </CustomButton>
         </div>
       )}

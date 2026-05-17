@@ -1,0 +1,109 @@
+{
+  "Navbar": {
+    "banner": "This website is for demo purposes only. It's functional, but is just for fun. Feel free to explore and experiment! 🔥🔥🔥",
+    "logoAlt": "Wearit Logo",
+    "newArrivals": "New Arrivals",
+    "apparel": "Apparel",
+    "accessories": "Accessories",
+    "onSale": "On Sale",
+    "logout": "Logout",
+    "login": "Login",
+    "signUp": "Sign Up"
+  },
+  "CartDrawer": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty",
+    "discount": "Discount",
+    "total": "Total",
+    "checkout": "Proceed to Checkout",
+    "taxNote": "Taxes and shipping calculated at checkout"
+  },
+  "Featured": {
+    "heading": "New Featured Items ✨",
+    "viewMore": "View More"
+  },
+  "Footer": {
+    "mainMenu": "Main Menu",
+    "shop": "Shop",
+    "newReleases": "New Releases",
+    "accessories": "Accessories",
+    "giftCards": "Gift Cards",
+    "lastChanceSale": "Last Chance Sale",
+    "help": "Help",
+    "ordersShipping": "Orders & Shipping",
+    "returnsRefunds": "Returns & Refunds",
+    "salesTerms": "Sales Terms & Conditions",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "newsletterText": "Sign up for our newsletter to get updated on latest collections, deals and other news!",
+    "namePlaceholder": "Name",
+    "emailPlaceholder": "Email",
+    "subscribe": "Subscribe",
+    "confirmationEmail": "A confirmation e-mail has been sent!",
+    "credit": "Designed and built by Megan Krenbrink."
+  },
+  "ProductCard": {
+    "sale": "Sale"
+  },
+  "HomePage": {
+    "heroAlt": "Hero Image",
+    "appTitle": "Discover more with the WearIt App",
+    "appSubtitle": "Now available for iPhone and Android",
+    "downloadNow": "Download Now"
+  },
+  "ProductsPage": {
+    "heading": "Products",
+    "clearCategory": "Clear Category",
+    "clearSort": "Clear Sort",
+    "showMore": "Show More",
+    "sortPlaceholder": "Sort by",
+    "allProducts": "All Products",
+    "featured": "Featured",
+    "onSale": "On Sale",
+    "priceHighToLow": "Price high to low",
+    "priceLowToHigh": "Price low to high",
+    "categoryPlaceholder": "Category",
+    "allCategories": "All Categories",
+    "pants": "Pants",
+    "tees": "Tees",
+    "sweaters": "Sweaters",
+    "shorts": "Shorts",
+    "jackets": "Jackets"
+  },
+  "ProductPage": {
+    "notFound": "Product not found",
+    "sale": "Sale",
+    "addToCart": "Add to Cart",
+    "sizeChart": "Size Chart",
+    "details": "Details:",
+    "youMightLike": "You might like some of these"
+  },
+  "LoginPage": {
+    "heading": "Login",
+    "subheading": "Enter your email and password to login",
+    "email": "Email",
+    "password": "Password",
+    "loggingIn": "Logging in...",
+    "loginButton": "Login",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up",
+    "errorRequired": "Both fields are required.",
+    "successMessage": "Logged in successfully!",
+    "errorFallback": "Login failed. Please try again."
+  },
+  "SignUpPage": {
+    "heading": "Sign Up",
+    "subheading": "Please fill in the information below",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "creatingAccount": "Creating Account...",
+    "createAccount": "Create Account",
+    "haveAccount": "Already have an account?",
+    "login": "Login",
+    "errorRequired": "All fields are required.",
+    "successMessage": "Account created successfully!",
+    "errorFallback": "Registration failed. Please try again."
+  }
+}

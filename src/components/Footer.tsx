@@ -12,8 +12,10 @@ import TextField from '@mui/material/TextField';
 import { ThemeProvider } from '@emotion/react';
 import theme from '../theme/theme';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 export default function Footer() {
+  const t = useTranslations('Footer');
   const [subscribeMessage, setSubscribeMessage] = useState<boolean>(false);
 
   const handleSubscribe = () => {
@@ -56,63 +58,60 @@ export default function Footer() {
         </div>
         <div className="text-wearit-white">
           <ul className="flex flex-col gap-4">
-            <li className="title">Main Menu</li>
+            <li className="title">{t('mainMenu')}</li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
-              Shop
+              {t('shop')}
             </li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
-              New Releases
+              {t('newReleases')}
             </li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
-              Accessories
+              {t('accessories')}
             </li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
-              Gift Cards
+              {t('giftCards')}
             </li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
-              Last Chance Sale
+              {t('lastChanceSale')}
             </li>
           </ul>
         </div>
         <div className="text-wearit-white ">
           <ul className="flex flex-col gap-4">
-            <li className="title">Help</li>
+            <li className="title">{t('help')}</li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
-              Orders & Shipping
+              {t('ordersShipping')}
             </li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
-              Returns & Refunds
+              {t('returnsRefunds')}
             </li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
-              Sales Terms & Conditions
+              {t('salesTerms')}
             </li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
-              Privacy Policy
+              {t('privacyPolicy')}
             </li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
-              Terms of Service
+              {t('termsOfService')}
             </li>
           </ul>
         </div>
         <div className="flex flex-col gap-2 max-w-[250px] lg:max-w-[320px] mt-8">
-          <p className="text-wearit-white">
-            Sign up for our newsletter to get updated on latest collections,
-            dales and other news!
-          </p>
+          <p className="text-wearit-white">{t('newsletterText')}</p>
           <TextField
-            label="Name"
+            label={t('namePlaceholder')}
             variant="outlined"
             color="secondary"
             className="bg-wearit-white opacity-90 rounded-md"
           />
           <TextField
-            label="Email"
+            label={t('emailPlaceholder')}
             variant="outlined"
             color="secondary"
             className="bg-wearit-white opacity-90 rounded-md"
           />
           <CustomButton variant="primary" onClick={handleSubscribe}>
-            Subscribe
+            {t('subscribe')}
           </CustomButton>
           <div className="h-2"></div>
           <p
@@ -120,12 +119,12 @@ export default function Footer() {
               !subscribeMessage && 'invisible'
             }`}
           >
-            A confirmation e-mail has been sent!
+            {t('confirmationEmail')}
           </p>
         </div>
       </div>
       <div className="bg-wearit-yellow text-wearit-black text-center text-caption py-1">
-        Designed and built by Megan Krenbrink.
+        {t('credit')}
       </div>
     </ThemeProvider>
   );

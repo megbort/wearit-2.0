@@ -18,9 +18,11 @@ import { ThemeProvider } from '@emotion/react';
 import CartDrawer from './CartDrawer';
 import useStore from '../services/store/useStore';
 import { useLogout } from '../hooks/useAuth';
+import { useTranslations } from 'next-intl';
 
 export default function Navbar() {
-  // Menu state management
+  const t = useTranslations('Navbar');
+
   const [mobileMenuAnchor, setMobileMenuAnchor] = useState<null | HTMLElement>(
     null
   );
@@ -28,11 +30,9 @@ export default function Navbar() {
     useState<null | HTMLElement>(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  // Computed menu states
   const open = Boolean(mobileMenuAnchor);
   const userMenuOpen = Boolean(accountMenuAnchor);
 
-  // Authentication state and actions
   const user = useStore((state) => state.user);
   const isAuthenticated = useStore((state) => state.isAuthenticated);
   const { logout } = useLogout();
@@ -67,17 +67,14 @@ export default function Navbar() {
     <ThemeProvider theme={theme}>
       <header className="w-full">
         <div className="bg-wearit-yellow flex justify-center py-1 text-caption">
-          <p>
-            This website is for demo purposes only. It&apos;s functional, but is
-            just for fun. Feel free to explore and experiment! 🔥🔥🔥
-          </p>
+          <p>{t('banner')}</p>
         </div>
         <nav className="bg-wearit-black flex items-center justify-between p-4 md:p-8 h-[100px]">
           <div>
             <Link href={'/'}>
               <Image
                 src="wearit/wearit-logo-v3_cj1le4.png"
-                alt="Wearit Logo"
+                alt={t('logoAlt')}
                 width={200}
                 height={200}
                 priority
@@ -117,22 +114,22 @@ export default function Navbar() {
             >
               <MenuItem onClick={handleClose}>
                 <Link href={'/products'} className="w-full">
-                  New Arrivals
+                  {t('newArrivals')}
                 </Link>
               </MenuItem>
               <MenuItem onClick={handleClose}>
                 <Link href={'/products'} className="w-full">
-                  Apparel
+                  {t('apparel')}
                 </Link>
               </MenuItem>
               <MenuItem onClick={handleClose}>
                 <Link href={'/products'} className="w-full">
-                  Accessories
+                  {t('accessories')}
                 </Link>
               </MenuItem>
               <MenuItem onClick={handleClose}>
                 <Link href={'/products'} className="w-full">
-                  On Sale
+                  {t('onSale')}
                 </Link>
               </MenuItem>
             </Menu>
@@ -144,25 +141,25 @@ export default function Navbar() {
               href={'/products'}
               className="title text-wearit-red hover:text-wearit-green"
             >
-              New Arrivals
+              {t('newArrivals')}
             </Link>
             <Link
               href={'/products'}
               className="title text-wearit-red hover:text-wearit-green"
             >
-              Apparel
+              {t('apparel')}
             </Link>
             <Link
               href={'/products'}
               className="title text-wearit-red hover:text-wearit-green"
             >
-              Accessories
+              {t('accessories')}
             </Link>
             <Link
               href={'/products'}
               className="title text-wearit-red hover:text-wearit-green"
             >
-              On Sale
+              {t('onSale')}
             </Link>
           </div>
 
@@ -200,7 +197,6 @@ export default function Navbar() {
             >
               {isAuthenticated && user
                 ? [
-                    // Authenticated - show user info and logout
                     <MenuItem key="user-info" disabled>
                       <div>
                         <div className="font-semibold text-sm">
@@ -212,19 +208,18 @@ export default function Navbar() {
                       </div>
                     </MenuItem>,
                     <MenuItem key="logout" onClick={handleLogout}>
-                      <span className="text-wearit-black">Logout</span>
+                      <span className="text-wearit-black">{t('logout')}</span>
                     </MenuItem>,
                   ]
                 : [
-                    // Not authenticated - show login/signup
                     <MenuItem key="login" onClick={handleClose}>
                       <Link href={'/auth/login'} className="w-full">
-                        Login
+                        {t('login')}
                       </Link>
                     </MenuItem>,
                     <MenuItem key="signup" onClick={handleClose}>
                       <Link href={'/auth/signup'} className="w-full">
-                        Sign Up
+                        {t('signUp')}
                       </Link>
                     </MenuItem>,
                   ]}
