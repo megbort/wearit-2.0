@@ -20,22 +20,22 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
       open={open}
       onClose={onClose}
       PaperProps={{
-        className: 'w-full sm:w-[400px] bg-wearit-white',
+        className: 'w-full sm:w-[400px] bg-wearit-white dark:bg-zinc-900',
       }}
     >
       <div className="flex flex-col h-full p-4">
         {/* Header */}
-        <div className="flex justify-between items-center mb-4 border-b border-wearit-grey pb-4">
+        <div className="flex justify-between items-center mb-4 border-b border-wearit-grey dark:border-zinc-700 pb-4">
           <Typography
             variant="h6"
-            className="font-bold text-wearit-black"
+            className="font-bold text-wearit-black dark:text-wearit-white"
             style={{ fontFamily: 'var(--font-comfortaa)' }}
           >
             {t('title')}
           </Typography>
           <IconButton
             onClick={onClose}
-            className="text-wearit-red hover:text-wearit-green"
+            sx={{ color: '#ff3d5c', '&:hover': { color: '#76dbbf' } }}
           >
             <FontAwesomeIcon icon={faTimes} />
           </IconButton>
@@ -49,10 +49,10 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
         </div>
 
         {/* Checkout Section */}
-        <div className="border-t border-wearit-grey pt-4 mt-4">
+        <div className="border-t border-wearit-grey dark:border-zinc-700 pt-4 mt-4">
           {/* Discounts */}
           <div className="flex justify-between items-center mb-2">
-            <Typography className="text-wearit-black">{t('discount')}</Typography>
+            <Typography className="text-wearit-black dark:text-wearit-white">{t('discount')}</Typography>
             <Typography className="text-wearit-green font-bold">
               -$0.00
             </Typography>
@@ -62,14 +62,14 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
           <div className="flex justify-between items-center mb-4">
             <Typography
               variant="h6"
-              className="font-bold text-wearit-black"
+              className="font-bold text-wearit-black dark:text-wearit-white"
               style={{ fontFamily: 'var(--font-comfortaa)' }}
             >
               {t('total')}
             </Typography>
             <Typography
               variant="h6"
-              className="font-bold text-wearit-black"
+              className="font-bold text-wearit-black dark:text-wearit-white"
               style={{ fontFamily: 'var(--font-comfortaa)' }}
             >
               $0.00

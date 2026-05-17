@@ -24,7 +24,7 @@ main {
 
 body {
   @include typography-styles;
-  @apply flex flex-col;
+  @apply flex flex-col bg-wearit-white dark:bg-zinc-900 text-wearit-black dark:text-wearit-white;
 }
 
 main {

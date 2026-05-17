@@ -28,12 +28,20 @@ const theme = createTheme({
           padding: '10px',
         },
         root: {
+          backgroundColor: '#fafafa',
           '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
             borderColor: '#0070f3',
           },
           notchedOutline: {
             borderColor: '#0070f3',
           },
+        },
+      },
+    },
+    MuiPopover: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: '#fafafa',
         },
       },
     },

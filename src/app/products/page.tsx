@@ -103,7 +103,7 @@ export default function Products() {
   };
 
   return (
-    <div className="py-12 mb-8 px-2 md:px-10 w-full lg:max-w-5xl xl:max-w-7xl mx-auto">
+    <div className="py-12 mb-8 px-2 md:px-10 w-full lg:max-w-5xl xl:max-w-7xl mx-auto dark:bg-zinc-900 dark:text-wearit-white">
       <header className="p-4 text-center">
         <h3 className="font-bold">{t('heading')}</h3>
       </header>

@@ -41,7 +41,7 @@ const LoginPage = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="h-full flex flex-col py-24 m-auto gap-4 max-w-[275px] md:max-w-[550px]">
+      <div className="h-full flex flex-col py-24 m-auto gap-4 max-w-[275px] md:max-w-[550px] dark:text-wearit-white">
         <h3 className="text-center">{t('heading')}</h3>
         <p className="text-center">{t('subheading')}</p>
         <TextField

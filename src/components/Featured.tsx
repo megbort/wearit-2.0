@@ -29,7 +29,7 @@ export default function Featured() {
   };
 
   return (
-    <div className="py-12 flex flex-col items-center">
+    <div className="py-12 flex flex-col items-center dark:bg-zinc-900 dark:text-wearit-white">
       <h3 className="pb-8 px-4 font-bold">{t('heading')}</h3>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
         {isLoading

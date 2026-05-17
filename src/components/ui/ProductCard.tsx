@@ -14,7 +14,7 @@ export default function ProductCard({ product }: Readonly<ProductCardProps>) {
 
   return (
     <Link href={`product/${product.id}`}>
-      <div className="relative w-[280px] h-[280px] flex flex-col justify-between bg-neutral-100 rounded-lg border hover:border-neutral-600 hover:cursor-pointer hover:bg-transparent">
+      <div className="relative w-[280px] h-[280px] flex flex-col justify-between bg-neutral-100 dark:bg-zinc-800 rounded-lg border dark:border-zinc-600 hover:border-neutral-600 hover:cursor-pointer hover:bg-transparent dark:hover:bg-zinc-700">
         {product.sale && (
           <div className="absolute top-0 right-0 z-50 rounded-tr-lg bg-wearit-red text-wearit-white w-[80px] p-1 text-center">
             {t('sale')}
@@ -34,7 +34,7 @@ export default function ProductCard({ product }: Readonly<ProductCardProps>) {
           <div className="flex gap-2 justify-center">
             {product.sale ? (
               <>
-                <p className="text-body-1 text-neutral-600 line-through">
+                <p className="text-body-1 text-neutral-600 dark:text-zinc-400 line-through">
                   ${product.price}
                 </p>
                 <p className="text-body-1 text-wearit-red">
@@ -42,7 +42,7 @@ export default function ProductCard({ product }: Readonly<ProductCardProps>) {
                 </p>
               </>
             ) : (
-              <p className="text-body-1 text-neutral-600">${product.price}</p>
+              <p className="text-body-1 text-neutral-600 dark:text-zinc-400">${product.price}</p>
             )}
           </div>
         </div>

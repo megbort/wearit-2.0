@@ -34,7 +34,7 @@ const BoxSelect = ({
             className={`flex items-center justify-center pt-0.5 border ${
               selectedValue === item.value
                 ? 'border-wearit-red text-wearit-red'
-                : 'border-wearit-black text-wearit-black'
+                : 'border-wearit-grey-dark text-wearit-grey-dark dark:border-zinc-400 dark:text-zinc-400'
             } hover:border-wearit-red hover:text-wearit-red hover:cursor-pointer`}
             onClick={() => handleChange(item.value)}
           >

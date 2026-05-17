@@ -7,7 +7,10 @@ import {
   faCartShopping,
   faBars,
   faTimes,
+  faSun,
+  faMoon,
 } from '@fortawesome/free-solid-svg-icons';
+import { useTheme } from '@/components/ThemeProvider';
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from '@mui/material/Button';
@@ -36,6 +39,9 @@ export default function Navbar() {
   const user = useStore((state) => state.user);
   const isAuthenticated = useStore((state) => state.isAuthenticated);
   const { logout } = useLogout();
+
+  const { resolvedTheme, setTheme } = useTheme();
+  const handleThemeToggle = () => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setMobileMenuAnchor(event.currentTarget);
@@ -84,7 +90,14 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu */}
-          <div className="lg:hidden">
+          <div className="lg:hidden flex items-center gap-2">
+            <Button onClick={handleThemeToggle} aria-label="Toggle theme">
+              <FontAwesomeIcon
+                icon={resolvedTheme === 'dark' ? faSun : faMoon}
+                style={{ fontSize: '20px' }}
+                className="text-wearit-red hover:text-wearit-green"
+              />
+            </Button>
             <Button
               id="menu-button"
               aria-controls={open ? 'menu' : undefined}
@@ -164,6 +177,13 @@ export default function Navbar() {
           </div>
 
           <div className="hidden lg:flex basis-[200px] justify-center items-center gap-6">
+            <Button onClick={handleThemeToggle} aria-label="Toggle theme">
+              <FontAwesomeIcon
+                icon={resolvedTheme === 'dark' ? faSun : faMoon}
+                style={{ fontSize: '20px' }}
+                className="text-wearit-red hover:text-wearit-green"
+              />
+            </Button>
             <Button
               onClick={handleUserClick}
               aria-controls={userMenuOpen ? 'user-menu' : undefined}
