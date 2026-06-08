@@ -3,15 +3,23 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from '../../components/ui/ProductCard';
 import ProductCardSkeleton from '../../components/ui/ProductCardSkeleton';
-import { Products as ProductMocks } from '@/services/mocks/products';
-import { Product } from '@/services/models/product';
 import CustomButton from '../../components/ui/Button';
 import SelectDropdown from '../../components/ui/Select';
 import { CategoryType } from '@/services/models/category';
 import { useTranslations } from 'next-intl';
+import { useProducts } from '@/hooks/useProducts';
+import useStore from '@/services/store/useStore';
 
 export default function Products() {
   const t = useTranslations('ProductsPage');
+  const { products: allProducts, loading: productsLoading } = useProducts();
+  const setProducts = useStore((state) => state.setProducts);
+
+  useEffect(() => {
+    if (allProducts.length > 0) {
+      setProducts(allProducts);
+    }
+  }, [allProducts, setProducts]);
 
   const sortBySelect = {
     placeholder: t('sortPlaceholder'),
@@ -39,39 +47,19 @@ export default function Products() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedSort, setSelectedSort] = useState<string>('all');
   const [visibleCount, setVisibleCount] = useState(8);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleCategoryChange = (category: string) => {
-    setIsLoading(true);
     setSelectedCategory(category);
     setVisibleCount(8);
-
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 800);
   };
 
   const handleSortChange = (sort: string) => {
-    setIsLoading(true);
     setSelectedSort(sort);
     setVisibleCount(8);
-
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 800);
   };
 
   const getFilteredProducts = () => {
-    let filteredProducts = ProductMocks.filter(
+    let filteredProducts = allProducts.filter(
       (product) =>
         selectedCategory === 'all' || product.category === selectedCategory
     );
@@ -135,9 +123,9 @@ export default function Products() {
         </div>
       </div>
       <div className="grid gap-4 md:gap-8 lg:gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {isLoading
+        {productsLoading
           ? renderSkeletons()
-          : visibleProducts.map((product: Product) => (
+          : visibleProducts.map((product) => (
               <div key={product.id} className="flex justify-center">
                 <ProductCard product={product} />
               </div>

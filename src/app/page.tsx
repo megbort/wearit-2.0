@@ -4,7 +4,6 @@ import Image from 'next/image';
 import CustomButton from '../components/ui/Button';
 import Featured from '@/components/Featured';
 import Category from '@/components/Categories';
-import cloudinaryLoader from '../utils/custom-image-loader';
 import { useTranslations } from 'next-intl';
 
 export default function Home() {
@@ -14,7 +13,6 @@ export default function Home() {
     <>
       <div className="relative h-[calc(100vh-140px)] overflow-hidden">
         <Image
-          loader={cloudinaryLoader}
           src="wearit/wearit-hero-v2_fdxe1s.jpg"
           alt={t('heroAlt')}
           fill

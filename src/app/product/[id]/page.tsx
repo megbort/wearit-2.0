@@ -1,14 +1,38 @@
 import BoxSelect from '@/components/ui/BoxSelect';
 import CustomButton from '@/components/ui/Button';
-import { Products as ProductsMock } from '@/services/mocks/products';
 import Image from 'next/image';
 import ProductSlider from '@/components/ui/ProductSlider';
 import { getTranslations } from 'next-intl/server';
+import type { Product } from '@/services/models/product';
+
+const GRAPHQL_URL = process.env.NEXT_PUBLIC_GRAPHQL_URL ?? 'http://localhost:4000/graphql';
+
+async function fetchProduct(id: string): Promise<Product | null> {
+  const res = await fetch(GRAPHQL_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      query: `{ product(id: "${id}") { id sku name price images colors sizes details featured sale category } }`,
+    }),
+  });
+  const json = await res.json();
+  return json?.data?.product ?? null;
+}
+
+async function fetchAllProductIds(): Promise<string[]> {
+  const res = await fetch(GRAPHQL_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query: '{ products { id } }' }),
+  });
+  const json = await res.json();
+  return (json?.data?.products ?? []).map((p: { id: string }) => p.id);
+}
 
 export default async function Product(props: any) {
   const params = await props.params as { id: string };
   const id = params.id;
-  const product = ProductsMock.find((p) => p.id === id);
+  const product = await fetchProduct(id);
   const t = await getTranslations('ProductPage');
 
   if (!product) {
@@ -44,7 +68,7 @@ export default async function Product(props: any) {
           )}
           <div className="w-[350px] h-[350px] relative">
             <Image
-              src={product.imageUrl}
+              src={product.images[0]}
               alt={product.name}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
@@ -95,16 +119,15 @@ export default async function Product(props: any) {
           </div>
         </div>
       </div>
-      <div className="max-w-[600px] mx-auto py-20 hidden md:block">
+      <div className="max-w-[900px] mx-auto py-20 hidden md:block">
         <p className="text-center subtitle-1 pb-6">{t('youMightLike')}</p>
-        <ProductSlider></ProductSlider>
+        <ProductSlider currentId={id} />
       </div>
     </div>
   );
 }
 
 export async function generateStaticParams() {
-  return ProductsMock.map((product) => ({
-    id: product.id.toString(),
-  }));
+  const ids = await fetchAllProductIds();
+  return ids.map((id) => ({ id }));
 }

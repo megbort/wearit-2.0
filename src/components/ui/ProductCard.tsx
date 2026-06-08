@@ -22,7 +22,7 @@ export default function ProductCard({ product }: Readonly<ProductCardProps>) {
         )}
         <div className="h-[230px] relative">
           <Image
-            src={product.imageUrl}
+            src={product.images[0]}
             alt={product.name}
             fill
             sizes="(max-width: 640px) 80vw, (max-width: 1024px) 50vw, 33vw"

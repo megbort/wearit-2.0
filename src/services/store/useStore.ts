@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import type { Product } from '@/services/models/product';
 
 interface User {
   id: string;
@@ -36,6 +37,10 @@ interface StoreState {
   notification: Notification | null;
   setNotification: (notification: Notification) => void;
   clearNotification: () => void;
+
+  // Product catalogue (in-memory cache, not persisted)
+  products: Product[];
+  setProducts: (products: Product[]) => void;
 }
 
 const useStore = create<StoreState>()(
@@ -86,6 +91,10 @@ const useStore = create<StoreState>()(
       notification: null,
       setNotification: (notification) => set({ notification }),
       clearNotification: () => set({ notification: null }),
+
+      // Product catalogue
+      products: [],
+      setProducts: (products) => set({ products }),
     }),
     {
       name: 'app-storage',

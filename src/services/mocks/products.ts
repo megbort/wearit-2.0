@@ -3,10 +3,11 @@ import { CategoryType } from '../models/category';
 
 export const Products: Product[] = [
   {
-    id: '01',
+    id: '6a246246486a6cde9bb54c8e',
+    sku: 'JKT-001',
     name: 'Store Item 1',
     price: 29.99,
-    imageUrl: 'wearit/clothing-item-01_ecaf4s.jpg',
+    images: ['https://picsum.photos/seed/JKT-001/400/400'],
     colors: ['black', 'white', 'blue'],
     sizes: ['sm', 'm', 'l', 'xl'],
     details: [
@@ -20,10 +21,11 @@ export const Products: Product[] = [
     category: CategoryType.Jackets,
   },
   {
-    id: '02',
+    id: '6a246246486a6cde9bb54c8f',
+    sku: 'PNT-001',
     name: 'Store Item 2',
     price: 9.99,
-    imageUrl: 'wearit/clothing-item-02_u2qn0c.jpg',
+    images: ['https://picsum.photos/seed/PNT-001/400/400'],
     colors: ['white', 'blue'],
     sizes: ['sm', 'm', 'l'],
     details: [
@@ -37,10 +39,11 @@ export const Products: Product[] = [
     category: CategoryType.Pants,
   },
   {
-    id: '03',
+    id: '6a246246486a6cde9bb54c90',
+    sku: 'TEE-001',
     name: 'Store Item 3',
     price: 15.99,
-    imageUrl: 'wearit/clothing-item-03_yjignx.jpg',
+    images: ['https://picsum.photos/seed/TEE-001/400/400'],
     colors: ['black', 'white', 'blue'],
     sizes: ['xs', 'sm', 'm', 'l', 'xl'],
     details: [
@@ -54,10 +57,11 @@ export const Products: Product[] = [
     category: CategoryType.Tees,
   },
   {
-    id: '04',
+    id: '6a246246486a6cde9bb54c91',
+    sku: 'TEE-002',
     name: 'Store Item 4',
     price: 49.99,
-    imageUrl: 'wearit/clothing-item-04_k0dnrx.jpg',
+    images: ['https://picsum.photos/seed/TEE-002/400/400'],
     colors: ['black', 'white', 'blue'],
     sizes: ['xs', 'sm', 'm', 'l', 'xl'],
     details: [
@@ -71,10 +75,11 @@ export const Products: Product[] = [
     category: CategoryType.Tees,
   },
   {
-    id: '05',
+    id: '6a246246486a6cde9bb54c92',
+    sku: 'SWT-001',
     name: 'Store Item 5',
     price: 20.99,
-    imageUrl: 'wearit/clothing-item-05_e4syci.jpg',
+    images: ['https://picsum.photos/seed/SWT-001/400/400'],
     colors: ['black', 'white', 'blue'],
     sizes: ['xs', 'sm', 'm', 'l', 'xl'],
     details: [
@@ -88,10 +93,11 @@ export const Products: Product[] = [
     category: CategoryType.Sweaters,
   },
   {
-    id: '06',
+    id: '6a246246486a6cde9bb54c93',
+    sku: 'SWT-002',
     name: 'Store Item 6',
     price: 60.54,
-    imageUrl: 'wearit/clothing-item-06_myflly.jpg',
+    images: ['https://picsum.photos/seed/SWT-002/400/400'],
     colors: ['black', 'white', 'blue'],
     sizes: ['xs', 'sm', 'm', 'l', 'xl'],
     details: [
@@ -105,10 +111,11 @@ export const Products: Product[] = [
     category: CategoryType.Sweaters,
   },
   {
-    id: '07',
+    id: '6a246246486a6cde9bb54c94',
+    sku: 'JKT-002',
     name: 'Store Item 7',
     price: 29.99,
-    imageUrl: 'wearit/clothing-item-07_umfs2j.jpg',
+    images: ['https://picsum.photos/seed/JKT-002/400/400'],
     colors: ['black', 'white', 'blue'],
     sizes: ['xs', 'sm', 'm', 'l', 'xl'],
     details: [
@@ -122,10 +129,11 @@ export const Products: Product[] = [
     category: CategoryType.Jackets,
   },
   {
-    id: '08',
+    id: '6a246246486a6cde9bb54c95',
+    sku: 'PNT-002',
     name: 'Store Item 8',
     price: 59.99,
-    imageUrl: 'wearit/clothing-item-08_hkb1af.jpg',
+    images: ['https://picsum.photos/seed/PNT-002/400/400'],
     colors: ['black', 'white', 'blue'],
     sizes: ['xs', 'sm', 'm', 'l', 'xl'],
     details: [
@@ -139,10 +147,11 @@ export const Products: Product[] = [
     category: CategoryType.Pants,
   },
   {
-    id: '09',
+    id: '6a246246486a6cde9bb54c96',
+    sku: 'JKT-003',
     name: 'Store Item 9',
     price: 15.15,
-    imageUrl: 'wearit/clothing-item-09_dyyiah.jpg',
+    images: ['https://picsum.photos/seed/JKT-003/400/400'],
     colors: ['black', 'white', 'blue'],
     sizes: ['xs', 'sm', 'm', 'l', 'xl'],
     details: [
@@ -156,10 +165,11 @@ export const Products: Product[] = [
     category: CategoryType.Jackets,
   },
   {
-    id: '10',
+    id: '6a246246486a6cde9bb54c97',
+    sku: 'TEE-003',
     name: 'Store Item 10',
     price: 129.99,
-    imageUrl: 'wearit/clothing-item-10_dl62rk.jpg',
+    images: ['https://picsum.photos/seed/TEE-003/400/400'],
     colors: ['black', 'white', 'blue'],
     sizes: ['xs', 'sm', 'm', 'l', 'xl'],
     details: [
@@ -173,10 +183,11 @@ export const Products: Product[] = [
     category: CategoryType.Tees,
   },
   {
-    id: '11',
+    id: '6a246246486a6cde9bb54c98',
+    sku: 'PNT-003',
     name: 'Store Item 11',
     price: 9.99,
-    imageUrl: 'wearit/clothing-item-11_fbagsu.jpg',
+    images: ['https://picsum.photos/seed/PNT-003/400/400'],
     colors: ['black', 'white', 'blue'],
     sizes: ['xs', 'sm', 'm', 'l', 'xl'],
     details: [
@@ -190,10 +201,11 @@ export const Products: Product[] = [
     category: CategoryType.Pants,
   },
   {
-    id: '12',
+    id: '6a246246486a6cde9bb54c99',
+    sku: 'PNT-004',
     name: 'Store Item 12',
     price: 12.05,
-    imageUrl: 'wearit/clothing-item-12_o400wj.jpg',
+    images: ['https://picsum.photos/seed/PNT-004/400/400'],
     colors: ['black', 'white', 'blue'],
     sizes: ['xs', 'sm', 'm', 'l', 'xl'],
     details: [

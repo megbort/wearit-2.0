@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import ProductCard from '../../components/ui/ProductCard';
+import ProductMiniCard from '../../components/ui/ProductMiniCard';
 import { Products } from '@/services/mocks/products';
 
-const meta: Meta<typeof ProductCard> = {
-  title: 'Components/ProductCard',
-  component: ProductCard,
+const meta: Meta<typeof ProductMiniCard> = {
+  title: 'Components/ProductMiniCard',
+  component: ProductMiniCard,
   parameters: {
     layout: 'centered',
   },
@@ -17,5 +17,11 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     product: Products[0],
+  },
+};
+
+export const OnSale: Story = {
+  args: {
+    product: Products[1],
   },
 };

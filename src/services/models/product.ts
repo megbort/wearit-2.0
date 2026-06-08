@@ -2,9 +2,10 @@ import { CategoryType } from './category';
 
 export interface Product {
   id: string;
+  sku: string;
   name: string;
   price: number;
-  imageUrl: string;
+  images: string[];
   colors: string[];
   sizes: string[];
   details: string[];
