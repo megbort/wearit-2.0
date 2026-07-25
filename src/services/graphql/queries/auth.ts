@@ -27,6 +27,28 @@ export const GET_ME_QUERY = gql`
   }
 `;
 
+// Exchange the httpOnly refresh cookie for a new access token
+export const REFRESH_TOKEN_MUTATION = gql`
+  mutation RefreshToken {
+    refreshToken {
+      token
+      user {
+        id
+        firstName
+        lastName
+        email
+      }
+    }
+  }
+`;
+
+// Revoke the refresh token and clear the cookie
+export const LOGOUT_MUTATION = gql`
+  mutation Logout {
+    logout
+  }
+`;
+
 // Register mutation (for future use)
 export const REGISTER_MUTATION = gql`
   mutation Register(

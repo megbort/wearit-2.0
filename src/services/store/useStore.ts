@@ -20,16 +20,14 @@ interface StoreState {
   increaseCount: () => void;
   resetCount: () => void;
 
-  // Authentication state
+  // Authentication state (access token lives in memory in the Apollo client)
   user: User | null;
-  token: string | null;
   isAuthenticated: boolean;
   isLoading: boolean;
 
   // Authentication actions
   setUser: (user: User) => void;
-  setToken: (token: string) => void;
-  login: (user: User, token: string) => void;
+  login: (user: User) => void;
   logout: () => void;
   setLoading: (loading: boolean) => void;
 
@@ -53,38 +51,13 @@ const useStore = create<StoreState>()(
 
       // Authentication state
       user: null,
-      token: null,
       isAuthenticated: false,
       isLoading: false,
 
       // Authentication actions
       setUser: (user) => set({ user, isAuthenticated: true }),
-      setToken: (token) => {
-        set({ token });
-        if (globalThis.window) {
-          localStorage.setItem('auth-token', token);
-        }
-      },
-      login: (user, token) => {
-        set({
-          user,
-          token,
-          isAuthenticated: true,
-        });
-        if (globalThis.window) {
-          localStorage.setItem('auth-token', token);
-        }
-      },
-      logout: () => {
-        set({
-          user: null,
-          token: null,
-          isAuthenticated: false,
-        });
-        if (globalThis.window) {
-          localStorage.removeItem('auth-token');
-        }
-      },
+      login: (user) => set({ user, isAuthenticated: true }),
+      logout: () => set({ user: null, isAuthenticated: false }),
       setLoading: (loading) => set({ isLoading: loading }),
 
       // Notification actions
@@ -98,9 +71,19 @@ const useStore = create<StoreState>()(
     }),
     {
       name: 'app-storage',
+      version: 1,
+      // v0 persisted the access token; it now lives in memory only
+      migrate: (persistedState) => {
+        const state = persistedState as {
+          token?: string | null;
+          user: User | null;
+          isAuthenticated: boolean;
+        };
+        delete state.token;
+        return state;
+      },
       partialize: (state) => ({
         user: state.user,
-        token: state.token,
         isAuthenticated: state.isAuthenticated,
       }),
     }

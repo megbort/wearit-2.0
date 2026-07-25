@@ -22,3 +22,14 @@ export interface RegisterResponse {
 export interface MeResponse {
   me: User;
 }
+
+export interface RefreshTokenResponse {
+  refreshToken: {
+    token: string;
+    user: User;
+  };
+}
+
+export interface LogoutResponse {
+  logout: boolean;
+}

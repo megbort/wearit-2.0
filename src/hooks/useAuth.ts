@@ -1,11 +1,17 @@
-import { LOGIN_MUTATION, REGISTER_MUTATION, GET_ME_QUERY } from '../services/graphql/queries/auth';
+import {
+  LOGIN_MUTATION,
+  REGISTER_MUTATION,
+  GET_ME_QUERY,
+  LOGOUT_MUTATION,
+} from '../services/graphql/queries/auth';
 import type {
   LoginResponse,
   RegisterResponse,
   MeResponse,
+  LogoutResponse,
 } from '../services/graphql/models/auth';
 import useStore from '../services/store/useStore';
-import client from '../services/apollo/client';
+import client, { setAccessToken, getAccessToken } from '../services/apollo/client';
 
 export const useLogin = () => {
   const { login: loginStore, setLoading, isLoading } = useStore();
@@ -19,7 +25,8 @@ export const useLogin = () => {
       });
 
       if (result.data?.login) {
-        loginStore(result.data.login.user, result.data.login.token);
+        setAccessToken(result.data.login.token);
+        loginStore(result.data.login.user);
       }
       setLoading(false);
       return result.data;
@@ -53,7 +60,8 @@ export const useRegister = () => {
       });
 
       if (result.data?.register) {
-        loginStore(result.data.register.user, result.data.register.token);
+        setAccessToken(result.data.register.token);
+        loginStore(result.data.register.user);
       }
       setLoading(false);
       return result.data;
@@ -72,10 +80,10 @@ export const useRegister = () => {
 
 // Get current user
 export const useMe = () => {
-  const { user, token, setUser, logout } = useStore();
+  const { user, setUser, logout } = useStore();
 
   const getCurrentUser = async () => {
-    if (!token) return null;
+    if (!getAccessToken()) return null;
 
     try {
       const result = await client.query<MeResponse>({
@@ -103,7 +111,14 @@ export const useMe = () => {
 export const useLogout = () => {
   const { logout } = useStore();
 
-  const logoutUser = () => {
+  const logoutUser = async () => {
+    try {
+      // Revokes the refresh token and clears the httpOnly cookie server-side
+      await client.mutate<LogoutResponse>({ mutation: LOGOUT_MUTATION });
+    } catch (err) {
+      console.error('Logout mutation failed:', err);
+    }
+    setAccessToken(null);
     logout();
     client.clearStore();
   };

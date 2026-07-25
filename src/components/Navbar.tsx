@@ -16,6 +16,7 @@ import Link from 'next/link';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import CircularProgress from '@mui/material/CircularProgress';
 import theme from '../theme/theme';
 import { ThemeProvider } from '@emotion/react';
 import CartDrawer from './CartDrawer';
@@ -38,6 +39,8 @@ export default function Navbar() {
 
   const user = useStore((state) => state.user);
   const isAuthenticated = useStore((state) => state.isAuthenticated);
+  const isLoading = useStore((state) => state.isLoading);
+  const setNotification = useStore((state) => state.setNotification);
   const { logout } = useLogout();
 
   const { resolvedTheme, setTheme } = useTheme();
@@ -67,6 +70,7 @@ export default function Navbar() {
   const handleLogout = () => {
     logout();
     handleClose();
+    setNotification({ message: t('logoutMessage'), severity: 'info' });
   };
 
   return (
@@ -215,7 +219,13 @@ export default function Navbar() {
                 },
               }}
             >
-              {isAuthenticated && user
+              {isLoading
+                ? [
+                    <MenuItem key="loading" disabled className="justify-center">
+                      <CircularProgress size={20} className="text-wearit-red" />
+                    </MenuItem>,
+                  ]
+                : isAuthenticated && user
                 ? [
                     <MenuItem key="user-info" disabled>
                       <div>

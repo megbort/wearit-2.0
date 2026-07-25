@@ -7,6 +7,7 @@
     "accessories": "Accessories",
     "onSale": "On Sale",
     "logout": "Logout",
+    "logoutMessage": "You've been logged out.",
     "login": "Login",
     "signUp": "Sign Up"
   },

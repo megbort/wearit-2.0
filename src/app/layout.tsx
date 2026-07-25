@@ -7,6 +7,7 @@ import GlobalToast from '@/components/GlobalToast';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import AuthProvider from '@/components/AuthProvider';
 
 const comfortaa = Comfortaa({
   subsets: ['latin'],
@@ -33,12 +34,14 @@ export default async function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: `if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark');` }} />
         <ThemeProvider>
           <NextIntlClientProvider messages={messages}>
-            <main className="h-full flex flex-col">
-              <Navbar />
-              <div className="flex-grow">{children}</div>
-              <Footer />
-              <GlobalToast />
-            </main>
+            <AuthProvider>
+              <main className="h-full flex flex-col">
+                <Navbar />
+                <div className="flex-grow">{children}</div>
+                <Footer />
+                <GlobalToast />
+              </main>
+            </AuthProvider>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
