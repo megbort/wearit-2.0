@@ -5,7 +5,7 @@ import ProductSlider from '@/components/ui/ProductSlider';
 import { getTranslations } from 'next-intl/server';
 import type { Product } from '@/services/models/product';
 
-const GRAPHQL_URL = process.env.NEXT_PUBLIC_GRAPHQL_URL ?? 'http://localhost:4000/graphql';
+const GRAPHQL_URL = process.env.NEXT_PUBLIC_GRAPHQL_URL as string;
 
 async function fetchProduct(id: string): Promise<Product | null> {
   const res = await fetch(GRAPHQL_URL, {
@@ -30,7 +30,7 @@ async function fetchAllProductIds(): Promise<string[]> {
 }
 
 export default async function Product(props: any) {
-  const params = await props.params as { id: string };
+  const params = (await props.params) as { id: string };
   const id = params.id;
   const product = await fetchProduct(id);
   const t = await getTranslations('ProductPage');

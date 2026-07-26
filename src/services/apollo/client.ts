@@ -13,10 +13,15 @@ import { REFRESH_TOKEN_MUTATION } from '@/services/graphql/queries/auth';
 import useStore from '@/services/store/useStore';
 import type { RefreshTokenResponse } from '@/services/graphql/models/auth';
 
-const GRAPHQL_URL = process.env.NEXT_PUBLIC_GRAPHQL_URL ?? 'http://localhost:4000/graphql';
+const GRAPHQL_URL = process.env.NEXT_PUBLIC_GRAPHQL_URL as string;
 
 // Operations that must not trigger a token refresh on UNAUTHENTICATED
-const AUTH_OPERATIONS = new Set(['Login', 'Register', 'RefreshToken', 'Logout']);
+const AUTH_OPERATIONS = new Set([
+  'Login',
+  'Register',
+  'RefreshToken',
+  'Logout',
+]);
 
 // Access token lives in memory only; the httpOnly refresh cookie restores it
 let accessToken: string | null = null;
@@ -42,7 +47,9 @@ export const refreshSession = (): Promise<RefreshSession | null> => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: print(REFRESH_TOKEN_MUTATION) }),
       });
-      const { data } = (await response.json()) as { data?: RefreshTokenResponse };
+      const { data } = (await response.json()) as {
+        data?: RefreshTokenResponse;
+      };
       const session = data?.refreshToken ?? null;
       setAccessToken(session?.token ?? null);
       return session;
@@ -73,12 +80,13 @@ const authLink = new SetContextLink((prevContext) => ({
   },
 }));
 
-const errorLink = new ErrorLink(({ error, operation, forward }) => {
+export const errorLink = new ErrorLink(({ error, operation, forward }) => {
   if (!CombinedGraphQLErrors.is(error)) return;
-  if (operation.operationName && AUTH_OPERATIONS.has(operation.operationName)) return;
+  if (operation.operationName && AUTH_OPERATIONS.has(operation.operationName))
+    return;
 
   const unauthenticated = error.errors.some(
-    (graphQLError) => graphQLError.extensions?.code === 'UNAUTHENTICATED'
+    (graphQLError) => graphQLError.extensions?.code === 'UNAUTHENTICATED',
   );
   if (!unauthenticated) return;
 
@@ -97,7 +105,7 @@ const errorLink = new ErrorLink(({ error, operation, forward }) => {
       }
       // Retry once; the auth link re-reads the refreshed token
       return forward(operation);
-    })
+    }),
   );
 });
 
