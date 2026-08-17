@@ -41,6 +41,5 @@ next-env.d.ts
 
 *storybook.log
 
-/.github
 .claude
 claude.md
