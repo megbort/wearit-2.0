@@ -128,7 +128,7 @@ export default function Footer() {
         {t('credit')}
         <br />
         <span className="text-wearit-black/70">
-          build {appVersion.build} ({appVersion.sha})
+          v{appVersion.build} &middot; {appVersion.sha}
         </span>
       </div>
     </ThemeProvider>
