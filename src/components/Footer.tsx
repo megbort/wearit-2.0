@@ -13,6 +13,7 @@ import { ThemeProvider } from '@emotion/react';
 import theme from '../theme/theme';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { appVersion } from '@/utils/version';
 
 export default function Footer() {
   const t = useTranslations('Footer');
@@ -125,6 +126,10 @@ export default function Footer() {
       </div>
       <div className="bg-wearit-yellow text-wearit-black text-center text-caption py-1">
         {t('credit')}
+        <br />
+        <span className="text-wearit-black/70">
+          build {appVersion.build} ({appVersion.sha})
+        </span>
       </div>
     </ThemeProvider>
   );
