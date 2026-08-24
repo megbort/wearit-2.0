@@ -1,5 +1,5 @@
 import CategoryCard from './ui/CategoryCard';
-import { Categories } from '@/services/mocks/categories';
+import { Categories } from '@/services/mocks/categories.mock';
 import { Category as CategoryItem } from '@/services/models/category';
 
 export default function Category() {

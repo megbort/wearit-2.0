@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { expect, within } from 'storybook/test';
 import CategoryCard from '../../components/ui/CategoryCard';
-import { Category } from '@/services/models/category';
+import { CategoryMock } from '@/services/mocks/category.mock';
 
 const meta: Meta<typeof CategoryCard> = {
   title: 'Components/CategoryCard',
@@ -8,13 +9,6 @@ const meta: Meta<typeof CategoryCard> = {
   parameters: {
     layout: 'centered',
   },
-  tags: ['autodocs'],
-};
-
-const category: Category = {
-  title: 'Shop New Arrivals',
-  imageUrl:
-    'https://res.cloudinary.com/dm1yyjg7i/image/upload/wearit/pexels-alteredsnaps-14663631_inzowa.jpg',
 };
 
 export default meta;
@@ -22,6 +16,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    category,
+    category: CategoryMock,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText(CategoryMock.title)).toBeInTheDocument();
+
+    const link = canvas.getByRole('link');
+    await expect(link).toHaveAttribute('href', '/products');
   },
 };

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { expect, within } from 'storybook/test';
 import ProductCard from '../../components/ui/ProductCard';
-import { Products } from '@/services/mocks/products';
+import { Products } from '@/services/mocks/products.mock';
 
 const meta: Meta<typeof ProductCard> = {
   title: 'Components/ProductCard',
@@ -8,7 +9,6 @@ const meta: Meta<typeof ProductCard> = {
   parameters: {
     layout: 'centered',
   },
-  tags: ['autodocs'],
 };
 
 export default meta;
@@ -17,5 +17,12 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     product: Products[0],
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText(Products[0].name)).toBeInTheDocument();
+    await expect(
+      canvas.getByText(new RegExp(Products[0].price.toString())),
+    ).toBeInTheDocument();
   },
 };

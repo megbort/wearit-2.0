@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { action } from 'storybook/actions';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import CustomButton from '../../components/ui/Button';
 
 const meta: Meta<typeof CustomButton> = {
@@ -17,7 +18,7 @@ const meta: Meta<typeof CustomButton> = {
       options: ['primary', 'secondary'],
     },
   },
-  args: { onClick: action('clicked') },
+  args: { onClick: fn(action('clicked')) },
 };
 
 export default meta;
@@ -29,6 +30,12 @@ export const Primary: Story = {
     disabled: false,
     variant: 'primary',
   },
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: /primary button/i });
+    await userEvent.click(button);
+    await expect(args.onClick).toHaveBeenCalledTimes(1);
+  },
 };
 
 export const Secondary: Story = {
@@ -36,5 +43,11 @@ export const Secondary: Story = {
     children: 'Secondary Button',
     disabled: false,
     variant: 'secondary',
+  },
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: /secondary button/i });
+    await userEvent.click(button);
+    await expect(args.onClick).toHaveBeenCalledTimes(1);
   },
 };

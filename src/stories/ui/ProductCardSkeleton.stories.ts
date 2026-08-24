@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { expect } from 'storybook/test';
 import ProductCardSkeleton from '../../components/ui/ProductCardSkeleton';
 
 const meta: Meta<typeof ProductCardSkeleton> = {
@@ -20,7 +21,11 @@ const meta: Meta<typeof ProductCardSkeleton> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    await expect(canvasElement.querySelector('.animate-pulse')).toBeInTheDocument();
+  },
+};
 
 export const MultipleSkeletons: Story = {
   render: () => {
@@ -32,5 +37,8 @@ export const MultipleSkeletons: Story = {
       React.createElement(ProductCardSkeleton, { key: '3' }),
       React.createElement(ProductCardSkeleton, { key: '4' })
     );
+  },
+  play: async ({ canvasElement }) => {
+    await expect(canvasElement.querySelectorAll('.animate-pulse')).toHaveLength(4);
   },
 };

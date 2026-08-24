@@ -23,6 +23,7 @@
 # debug
 npm-debug.log*
 yarn-debug.log*
+.playwright-mcp/
 yarn-error.log*
 
 # env files
